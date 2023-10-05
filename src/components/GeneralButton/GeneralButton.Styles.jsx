@@ -1,7 +1,6 @@
 import styled from "styled-components"
 
 export const BaseButton = styled.button`
-
     appearance: none;
     backface-visibility: hidden;
     outline: none;
@@ -11,11 +10,11 @@ export const BaseButton = styled.button`
     border-radius: 10px;
     color: #fff;
     display: inline-block;
-    font-size: 20px;
+    font-size: 18px;
     overflow: hidden;
-    padding: 20px 50px;
-    margin: 5px;
-    transition: all .3s;
+    padding: 15px 35px;
+    margin: 10px;
+    transition: all .3s ease-in-out;
     text-transform: uppercase;
     cursor: pointer;
 
