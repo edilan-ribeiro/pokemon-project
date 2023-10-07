@@ -9,9 +9,6 @@ import { FaSpinner } from "react-icons/Fa"
 import { Link } from "react-router-dom"
 import { numberFill } from "../../utils/numberFill"
 
-// console.log("123", await pokemonList())
-// console.log("122", await pokemonDetails(5))
-
 export const HomeCards = () => {
 	const [pokeNames, setPokeNames] = useState([])
 	const [pokeDetails, setPokeDetails] = useState([])
@@ -44,7 +41,6 @@ export const HomeCards = () => {
 		const pokeApiList = await pokemonList(offset)
 		const pokeNameList = pokeApiList.results
 		setPokeNames((prevPokeNames) => [...prevPokeNames, ...pokeNameList])
-		setnextPokeDetails(pokeApiList.next)
 		setnextPokeDetails(offset)
 	}
 
