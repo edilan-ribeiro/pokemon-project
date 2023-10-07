@@ -13,10 +13,10 @@ export const MainContainer = ({ children }) => {
 	return (
 		<Main>
 			<Header>
-				{location.pathname === "/:name" && (
+				{location.pathname !== "/" && (
 					<Link to="/">
 						<BackButton title="Return to the home page">
-							<BiArrowBack /> Return to home
+							<BiArrowBack /> &nbsp; Back
 						</BackButton>
 					</Link>
 				)}

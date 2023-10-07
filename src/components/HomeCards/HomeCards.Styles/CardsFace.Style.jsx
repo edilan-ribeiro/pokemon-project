@@ -9,5 +9,5 @@ text-transform: capitalize;
 display: flex;
 flex-direction: column;
 align-items: center;
-
+ transition: all .2s ease-in-out;
 `

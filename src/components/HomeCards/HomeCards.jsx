@@ -5,6 +5,9 @@ import { CardsFace } from "./HomeCards.Styles/CardsFace.Style"
 import { ImageWrapper } from "./HomeCards.Styles/ImageWrapper.style"
 import { InfoWrapper } from "./HomeCards.Styles/InfoWrapper.Style"
 import { GeneralButton } from "../GeneralButton/GeneralButton"
+import { FaSpinner } from "react-icons/Fa"
+import { Link } from "react-router-dom"
+import { numberFill } from "../../utils/numberFill"
 
 // console.log("123", await pokemonList())
 // console.log("122", await pokemonDetails(5))
@@ -15,8 +18,6 @@ export const HomeCards = () => {
 	const [nextPokeDetails, setnextPokeDetails] = useState(0)
 
 	useEffect(() => {
-		
-
 		const getListData = async () => {
 			const pokeApiList = await pokemonList()
 			const pokeNameList = pokeApiList.results
@@ -38,16 +39,14 @@ export const HomeCards = () => {
 		getDetailsData()
 	}, [pokeNames])
 
-
 	const loadNextPokemon = async () => {
 		const offset = nextPokeDetails + 10
 		const pokeApiList = await pokemonList(offset)
 		const pokeNameList = pokeApiList.results
-		setPokeNames(prevPokeNames => [...prevPokeNames, ...pokeNameList])
+		setPokeNames((prevPokeNames) => [...prevPokeNames, ...pokeNameList])
 		setnextPokeDetails(pokeApiList.next)
 		setnextPokeDetails(offset)
 	}
-
 
 	return (
 		<>
@@ -57,29 +56,34 @@ export const HomeCards = () => {
 
 					return (
 						<div key={index}>
-							<CardsFace>
-								<ImageWrapper>
-									<img src={pokeImgUrl} alt={poke.name} />
-								</ImageWrapper>
+							<Link to={`${poke.name}`}>
+								<CardsFace>
+									<ImageWrapper>
+										<img src={pokeImgUrl} alt={`${poke.name} image`} />
+									</ImageWrapper>
 
-								<InfoWrapper>
-									<h2>
-										<span>Number {poke.id}</span>
-										<br />
-										{poke.name}
-									</h2>
-									<p>
-										{poke.types.map((pokeType, index) => (
-											<span key={index}>{pokeType.type.name} </span>
-										))}
-									</p>
-								</InfoWrapper>
-							</CardsFace>
+									<InfoWrapper>
+										<h2>
+											<span>#{ numberFill(poke.id, 3) }</span>
+											<br />
+											{poke.name}
+										</h2>
+										<p>
+											{poke.types.map((pokeType, index) => (
+												<span key={index}>{pokeType.type.name} </span>
+											))}
+										</p>
+									</InfoWrapper>
+								</CardsFace>
+							</Link>
 						</div>
 					)
 				})}
 			</Wrapper>
-			<GeneralButton handleClick={loadNextPokemon}>load more pokémons</GeneralButton>
+
+			<GeneralButton handleClick={loadNextPokemon}>
+				load more pokémons <FaSpinner />
+			</GeneralButton>
 		</>
 	)
 }

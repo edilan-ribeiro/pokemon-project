@@ -8,7 +8,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    background-color: gray; 
+    background-color: #000000c9; 
     font-family: 'Roboto', sans-serif;
     font-weight: 400;
   }
@@ -19,5 +19,6 @@ export const GlobalStyle = createGlobalStyle`
 
   a {
     text-decoration: none;
+    color: inherit; /* PLACEHOLDER */
   }
 `
