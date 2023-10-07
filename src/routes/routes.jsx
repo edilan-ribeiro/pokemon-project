@@ -7,7 +7,7 @@ export const AppRoutes = () => {
 		<BrowserRouter>
 			<Routes>
 				<Route exact path="/" Component={HomePage} />
-				<Route path="/pokemon-DD" Component={DetailsPage} />
+				<Route path="/:name" Component={DetailsPage} />
 				<Route path="*" element={<h1>404 NOT FOUND</h1>} />
 			</Routes>
 		</BrowserRouter>
