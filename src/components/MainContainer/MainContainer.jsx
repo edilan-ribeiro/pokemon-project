@@ -9,27 +9,28 @@ import { Link, useLocation } from "react-router-dom"
 
 export const MainContainer = ({ children }) => {
 	const location = useLocation()
-	
+
 	return (
 		<Main>
 			<Header>
 				{location.pathname !== "/" && (
 					<Link to="/">
 						<BackButton title="Return to the home page">
-							<BiArrowBack /> &nbsp; Back
+							<BiArrowBack /> Back
 						</BackButton>
 					</Link>
 				)}
 
-				<a href="/">
+				<Link to="/">
 					<img src={pokelogo} alt="Pokemon logo" />
-				</a>
+				</Link>
 				<TogglerButton />
 			</Header>
 
-			<Section>
-				{children}
-			</Section>
+				<Section>
+					{children}
+				</Section>
+			
 		</Main>
 	)
 }

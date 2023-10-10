@@ -6,11 +6,10 @@ align-items:center;
 justify-content:center;
 width: 100%;
 position: relative;
-margin: 10px;
 padding: 20px;
 
 img {
-    width:450px;
+    width:300px;
     margin-bottom: 20px;
 }
 
