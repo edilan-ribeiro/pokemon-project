@@ -2,7 +2,13 @@ import styled from "styled-components";
 
 export const MovesContainer = styled.div`
 
-   
+   max-height: 155px;
+   max-width: 400px;
+   overflow: auto;
+
+   h3 {
+    margin-bottom: 30px;
+   }
     
     ul{
         display: flex;
@@ -15,7 +21,6 @@ export const MovesContainer = styled.div`
             background-color: beige;
             padding: 8px;
             border-radius: 30px;
-    
         }
     }
    

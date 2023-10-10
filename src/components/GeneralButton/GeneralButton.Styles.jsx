@@ -17,6 +17,11 @@ export const BaseButton = styled.button`
     transition: all .3s ease-in-out;
     text-transform: uppercase;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    max-width: 350px;
 
     &:hover {
     background-color: #1366d6;
