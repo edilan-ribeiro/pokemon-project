@@ -5,10 +5,11 @@ export const SearchField = styled.input`
   width: 40%;
   padding: 10px 20px;
   margin: 8px 0;
-  box-sizing: border-box;
   border: none;
   border-bottom: 2px solid #0099cc;
+  background-color: transparent;
   transition: border-bottom 0.3s ease-in-out;
+ 
   
   &:focus {
     border-bottom: 2px solid #006699;
@@ -16,8 +17,8 @@ export const SearchField = styled.input`
   }
 
   &::placeholder {
-    color: #666;
-    opacity: 1;
+    color:  #ffffff86;;
+    
     text-align: center;
   }
 
