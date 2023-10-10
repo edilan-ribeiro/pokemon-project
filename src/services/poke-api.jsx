@@ -1,5 +1,5 @@
-export async function pokemonList(offset) {
-	const response = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=10&offset=${offset}`)
+export async function pokemonList(offsetValue) {
+	const response = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=12&offset=${offsetValue}`)
 	return await response.json()
 }
 
