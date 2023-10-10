@@ -1,18 +1,25 @@
 import { useEffect, useState } from "react"
 import { pokemonList, pokemonDetails } from "../../services/poke-api"
-import { Wrapper } from "./HomeCards.Styles/Wrapper.Style"
+import { WrapperUl } from "./HomeCards.Styles/WrapperUl.Style"
 import { CardsFace } from "./HomeCards.Styles/CardsFace.Style"
 import { ImageWrapper } from "./HomeCards.Styles/ImageWrapper.style"
 import { InfoWrapper } from "./HomeCards.Styles/InfoWrapper.Style"
 import { GeneralButton } from "../GeneralButton/GeneralButton"
-import { FaSpinner } from "react-icons/Fa"
+import { LoaderIcon } from "react-loader-icon"
 import { Link } from "react-router-dom"
 import { numberFill } from "../../utils/numberFill"
+import { TypesList } from "../TypesList/TypesList.Styles"
+import { types } from "../TypesList/TypesList"
+import { TypeFilter } from "./HomeCards.Styles/TypeFilter.Style.Jsx"
+import { FilterWrapper } from "./HomeCards.Styles/SearchWrapper"
+import { SearchField } from "./HomeCards.Styles/SearchField.Style"
+
 
 export const HomeCards = () => {
 	const [pokeNames, setPokeNames] = useState([])
 	const [pokeDetails, setPokeDetails] = useState([])
 	const [nextPokeDetails, setnextPokeDetails] = useState(0)
+	const [isLoadingMore, setIsLoadingMore] = useState(false);
 
 	useEffect(() => {
 		const getListData = async () => {
@@ -37,48 +44,75 @@ export const HomeCards = () => {
 	}, [pokeNames])
 
 	const loadNextPokemon = async () => {
-		const offset = nextPokeDetails + 10
-		const pokeApiList = await pokemonList(offset)
+		setIsLoadingMore(true)
+		const newOffsetValue = nextPokeDetails + 12
+		const pokeApiList = await pokemonList(newOffsetValue)
 		const pokeNameList = pokeApiList.results
 		setPokeNames((prevPokeNames) => [...prevPokeNames, ...pokeNameList])
-		setnextPokeDetails(offset)
+		setnextPokeDetails(newOffsetValue)
+		setIsLoadingMore(false)
 	}
+
+	
+
+	
+	
 
 	return (
 		<>
-			<Wrapper>
+			<FilterWrapper>
+				<p>Filter Pokémon by type</p>
+				<TypeFilter>
+					{types.map((type, index) => (
+						<li key={index}>{type}</li>
+					))}
+				</TypeFilter>
+				<p>Or search a Pokémon</p>
+				<SearchField type="text" placeholder="Type a pokémon Name or Number"/>
+			</FilterWrapper>
+
+			<WrapperUl>
 				{pokeDetails.map((poke, index) => {
-					const pokeImgUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${poke.id}.svg`
+
+					let pokeImgUrl
+					
+					poke.id < 648 
+					? pokeImgUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${poke.id}.svg`
+					: pokeImgUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${poke.id}.png`
+					
 
 					return (
 						<div key={index}>
 							<Link to={`${poke.name}`}>
-								<CardsFace>
+								<CardsFace type={poke.types[0].type.name}>
+
+									<h1>#{ numberFill(poke.id, 3) }</h1>
+
 									<ImageWrapper>
 										<img src={pokeImgUrl} alt={`${poke.name} image`} />
 									</ImageWrapper>
 
 									<InfoWrapper>
 										<h2>
-											<span>#{ numberFill(poke.id, 3) }</span>
-											<br />
 											{poke.name}
 										</h2>
-										<p>
+										<ul>
 											{poke.types.map((pokeType, index) => (
-												<span key={index}>{pokeType.type.name} </span>
+												<TypesList key={index} type={pokeType.type.name}>
+													{pokeType.type.name}
+												</TypesList>
 											))}
-										</p>
+										</ul>
 									</InfoWrapper>
 								</CardsFace>
 							</Link>
 						</div>
 					)
 				})}
-			</Wrapper>
+			</WrapperUl>
 
 			<GeneralButton handleClick={loadNextPokemon}>
-				load more pokémons <FaSpinner />
+				load more pokémons {isLoadingMore && <LoaderIcon size={25} color={"#FFF"}/>}
 			</GeneralButton>
 		</>
 	)

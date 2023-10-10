@@ -1,11 +1,12 @@
 import styled from "styled-components";
 
-export const Wrapper = styled.ul`
+export const WrapperUl = styled.ul`
         display: flex;
-        gap: 20px;
+        gap: 30px;
         flex-wrap: wrap;
         max-width: 900px;
-        padding: 10px;
+        
         align-items: center;
         justify-content: center;
+        margin-bottom: 30px;
 `
