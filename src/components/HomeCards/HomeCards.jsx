@@ -5,14 +5,14 @@ import { CardsFace } from "./HomeCards.Styles/CardsFace.Style"
 import { ImageWrapper } from "./HomeCards.Styles/ImageWrapper.style"
 import { InfoWrapper } from "./HomeCards.Styles/InfoWrapper.Style"
 import { GeneralButton } from "../GeneralButton/GeneralButton"
-import { LoaderIcon } from "react-loader-icon"
 import { Link } from "react-router-dom"
 import { numberFill } from "../../utils/numberFill"
 import { TypesList } from "../TypesList/TypesList.Styles"
 import { types } from "../TypesList/TypesList"
-import { TypeFilter } from "./HomeCards.Styles/TypeFilter.Style.Jsx"
+import { TypeFilter, ItemListFilter } from "./HomeCards.Styles/TypeFilter.Style.Jsx"
 import { FilterWrapper } from "./HomeCards.Styles/SearchWrapper"
 import { SearchField } from "./HomeCards.Styles/SearchField.Style"
+import LoaderIcon from 'react-loader-icon'
 
 
 export const HomeCards = () => {
@@ -54,7 +54,6 @@ export const HomeCards = () => {
 	}
 
 	
-
 	
 	
 
@@ -62,12 +61,14 @@ export const HomeCards = () => {
 		<>
 			<FilterWrapper>
 				<p>Filter Pokémon by type</p>
-				<TypeFilter>
+				<TypeFilter >
 					{types.map((type, index) => (
-						<li key={index}>{type}</li>
+						<ItemListFilter key={index} type={type}>
+							{type}
+						</ItemListFilter>
 					))}
 				</TypeFilter>
-				<p>Or search a Pokémon</p>
+				<p>Or search a specific Pokémon</p>
 				<SearchField type="text" placeholder="Type a pokémon Name or Number"/>
 			</FilterWrapper>
 
@@ -112,7 +113,7 @@ export const HomeCards = () => {
 			</WrapperUl>
 
 			<GeneralButton handleClick={loadNextPokemon}>
-				load more pokémons {isLoadingMore && <LoaderIcon size={25} color={"#FFF"}/>}
+				load more pokémons {isLoadingMore && <LoaderIcon size={20} color={'#FFF'}/>}
 			</GeneralButton>
 		</>
 	)
