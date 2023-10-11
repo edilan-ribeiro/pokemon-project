@@ -7,4 +7,10 @@ export const FilterWrapper = styled.div`
     align-items: center;
     margin: 10px 0;
     gap: 20px;
+
+    p{
+        font-size: 25px;
+        font-weight: 700;
+        color: aliceblue;
+    }
 `
