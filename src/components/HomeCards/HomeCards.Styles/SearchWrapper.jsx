@@ -11,6 +11,6 @@ export const FilterWrapper = styled.div`
     p{
         font-size: 25px;
         font-weight: 700;
-        color: aliceblue;
+        color: ${props => props.theme.color};
     }
 `

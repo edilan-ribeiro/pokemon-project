@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { useLocation } from "react-router-dom"
 import { pokemonAbilities, pokemonDetails } from "../../services/poke-api"
 import { DetailsCardContainer } from "./DetailsCard.Styles/DetailsCardContainer.Style"
@@ -11,8 +11,12 @@ import { MovesContainer } from "./DetailsCard.Styles/MovesContainer.Style"
 import { TypesList } from "../TypesList/TypesList.Styles"
 import {VscTriangleDown} from 'react-icons/vsc'
 import { SkillInfoToggler } from "./DetailsCard.Styles/SkillInfoToggler"
+import { ThemeContext } from "../../contexts/ThemeContext"
 
 export const DetailsCard = () => {
+
+	const { theme } = useContext(ThemeContext)
+
 	const locationName = useLocation()
 	const currentPokeName = locationName.pathname.slice(1)
 
@@ -79,7 +83,7 @@ export const DetailsCard = () => {
 	return (
 		<>
 			{dataCheck && (				
-				<DetailsCardContainer>
+				<DetailsCardContainer theme={theme}>
 					<MainImage type={pokeData.types[0].type.name}>
 						<img
 							src={pokeDetailsImg}
@@ -88,7 +92,7 @@ export const DetailsCard = () => {
 					</MainImage>
 
 					<RightSide>
-						<NameTypeContainer>
+						<NameTypeContainer theme={theme}>
 							<div>
 								<h1> #{numberFill(pokeData.id, 3)}</h1>
 								<h2>{currentPokeName}</h2>
@@ -99,8 +103,6 @@ export const DetailsCard = () => {
 								))}
 							</ul>
 					</NameTypeContainer>
-
-
 						
 							<AbilitiesContainer>
 								<h3>Abilities</h3>
@@ -115,24 +117,21 @@ export const DetailsCard = () => {
 												<p onClick={() => handleClick(index)}>
 														{skillName}
 														<SkillInfoToggler
+														 	theme={theme}
 															$isSkillOpen={skillDisplayInfo.includes(index)}>
 															<VscTriangleDown />
 														</SkillInfoToggler>
 												</p>
-												{
-												skillDisplayInfo.includes(index) &&
-												<p>{skillInfo[index]}</p>
-												}
+												{skillDisplayInfo.includes(index) && <p>{skillInfo[index]}</p>}
 											</li>
 										)
 									})}
 								</ul>
-							</AbilitiesContainer>
-							
+							</AbilitiesContainer>							
 							
 							<h3>Moves</h3>
 
-							<MovesContainer>
+							<MovesContainer theme={theme}>
 								<ul>
 									{pokeData.moves.map((pokeMoves, index) => (
 										<li key={index}>{pokeMoves.move.name}</li>

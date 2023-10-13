@@ -3,8 +3,6 @@ import pokeball from "../../../../public/images/project/Pokeball-bg.png"
 
 
 export const ImageWrapper = styled.div`
-
-
     background: transparent;
     position: relative;
     

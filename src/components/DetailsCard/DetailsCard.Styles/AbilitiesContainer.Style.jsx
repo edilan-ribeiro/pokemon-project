@@ -12,6 +12,7 @@ export const AbilitiesContainer = styled.div`
         border-bottom: 1px solid #00000021;
         padding-bottom: 15px;
         max-width: 370px;
+       
 
         p:first-child{
             cursor: pointer;

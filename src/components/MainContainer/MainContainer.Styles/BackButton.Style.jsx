@@ -7,8 +7,7 @@ export const BackButton = styled(BaseButton)`
     position: absolute;
     left: 0;
     bottom: 0;
-    margin: 30px 50px;
     text-align: center;
     display: flex;
-    text-transform: capitalize;
+    text-transform: capitalize;    
 `

@@ -18,7 +18,8 @@ export const MovesContainer = styled.div`
         margin: 10px 0 20px;
 
         li{
-            background-color: beige;
+            background-color: ${props => props.theme.background};
+            color: ${props => props.theme.color};
             padding: 8px;
             border-radius: 30px;
         }

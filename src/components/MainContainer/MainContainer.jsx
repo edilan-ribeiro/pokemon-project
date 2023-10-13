@@ -7,12 +7,18 @@ import { TogglerButton } from "../ThemeToggler/TogglerButton"
 import { Section } from "./MainContainer.Styles/Section.Style"
 import { Link, useLocation } from "react-router-dom"
 import { Footer } from "./MainContainer.Styles/Footer.Style"
+import { useContext } from "react"
+import { ThemeContext } from "../../contexts/ThemeContext"
+import { BackgroundContainer } from "./MainContainer.Styles/BackgroundContainer"
+
 
 export const MainContainer = ({ children }) => {
 	const location = useLocation()
 
+	const { theme } = useContext(ThemeContext);
+
 	return (
-		<>
+		<BackgroundContainer theme={theme}>
 			<Main>
 				<Header>
 					{location.pathname !== "/" && (
@@ -29,11 +35,13 @@ export const MainContainer = ({ children }) => {
 					<TogglerButton />
 				</Header>
 
-				<Section>{children}</Section>
+				<Section>
+					{children}
+				</Section>
 			</Main>
 			<Footer>
 				Made by <a href="https://edilan-ribeiro.github.io/my-portfolio/" target="_blank">Edilan Ribeiro</a>
 			</Footer>
-		</>
+		</BackgroundContainer>
 	)
 }

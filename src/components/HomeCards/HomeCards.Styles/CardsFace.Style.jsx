@@ -16,7 +16,7 @@ export const CardsFace = styled.li`
     border-radius: 25px;
    
    &:hover{
-    box-shadow: 0px 0px 15px 1px rgba(255, 255, 255, 0.75);
+    box-shadow: 0px 0px 15px 1px ${props => props.theme.shadow};
     transform: scale(1.05);
    } 
 

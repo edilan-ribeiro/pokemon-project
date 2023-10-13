@@ -9,7 +9,7 @@ export const Header = styled.header`
     padding: 20px;
 
         img {
-            width:300px;
+            width:310px;
             margin-bottom: 50px;
         }
 

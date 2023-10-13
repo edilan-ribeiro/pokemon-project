@@ -13,9 +13,14 @@ import { TypeFilter, ItemListFilter } from "./HomeCards.Styles/TypeFilter.Style.
 import { FilterWrapper } from "./HomeCards.Styles/SearchWrapper"
 import { SearchField } from "./HomeCards.Styles/SearchField.Style"
 import LoaderIcon from 'react-loader-icon'
+import { useContext } from "react"
+import { ThemeContext } from "../../contexts/ThemeContext"
 
 
 export const HomeCards = () => {
+
+	const { theme } = useContext(ThemeContext)
+
 	const [pokeNames, setPokeNames] = useState([])
 	const [pokeDetails, setPokeDetails] = useState([])
 	const [nextPokeDetails, setnextPokeDetails] = useState(0)
@@ -59,11 +64,11 @@ export const HomeCards = () => {
 
 	return (
 		<>
-			<FilterWrapper>
+			<FilterWrapper  theme={theme}>
 				<p>Filter Pokémon by type</p>
 				<TypeFilter >
 					{types.map((type, index) => (
-						<ItemListFilter key={index} type={type}>
+						<ItemListFilter key={index} type={type} theme={theme}>
 							{type}
 						</ItemListFilter>
 					))}
@@ -85,7 +90,7 @@ export const HomeCards = () => {
 					return (
 						<div key={index}>
 							<Link to={`${poke.name}`}>
-								<CardsFace type={poke.types[0].type.name}>
+								<CardsFace type={poke.types[0].type.name} theme={theme}>
 
 									<h1>#{ numberFill(poke.id, 3) }</h1>
 
@@ -112,7 +117,7 @@ export const HomeCards = () => {
 				})}
 			</WrapperUl>
 
-			<GeneralButton handleClick={loadNextPokemon}>
+			<GeneralButton handleClick={loadNextPokemon} theme={theme}>
 				load more pokémons {isLoadingMore && <LoaderIcon size={20} color={'#FFF'}/>}
 			</GeneralButton>
 		</>
