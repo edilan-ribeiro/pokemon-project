@@ -24,7 +24,7 @@ export const Moon = styled.span`
     position: absolute;
     left: 1;
     color: #FFF;  
-    transform: ${props => props.theme.color === '#FFFFFF' ? 'scale(1)' : 'scale(0)  translateX(90px)'};
+    transform: ${props => props.theme.color === '#FFFFFF' ? 'scale(1)' : 'scale(0)  translateX(55px)'};
     transition: 0.2s ease-in-out;
 `
 
@@ -32,6 +32,6 @@ export const Sun = styled.span`
     position: absolute;
     right: 5px;
     color: gold;
-    transform: ${props => props.theme.color === '#000000' ? 'scale(1)' : 'scale(0) translateX(-90px)'};
+    transform: ${props => props.theme.color === '#000000' ? 'scale(1)' : 'scale(0) translateX(-55px)'};
     transition: 0.2s ease-in-out;
 `

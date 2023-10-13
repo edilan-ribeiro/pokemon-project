@@ -8,8 +8,6 @@ export const TogglerButton = () => {
 
 	const { theme, setTheme } = useContext(ThemeContext)
 
-	console.log(theme)
-
 	return (
 		<Switch htmlFor="toggler" theme={theme} >
 			<TogglerInput
