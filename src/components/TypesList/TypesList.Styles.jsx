@@ -1,7 +1,5 @@
 import styled from "styled-components";
-import { types, typeBgColor } from "./TypesList";
-
-
+import { whiteTextTypes, typeBgColor } from "./TypesList";
 
 export const TypesList = styled.li`
 
@@ -20,6 +18,6 @@ export const TypesList = styled.li`
     background-color: ${props => typeBgColor[props.type] || 'gray' };
     
     color: ${props => 
-        types.includes(props.type) ? '#FFFFFF' : '#000000'
+        whiteTextTypes.includes(props.type) ? '#FFFFFF' : '#000000'
     };
 `

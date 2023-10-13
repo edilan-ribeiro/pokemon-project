@@ -1,4 +1,4 @@
-export const types = [
+export const whiteTextTypes = [
 	"all",
 	"bug",
 	"dragon",
@@ -32,3 +32,25 @@ export const typeBgColor = {
 	rock: "#a38c21",
 	water: "#4592c4",
 }
+
+export const allTypes = [
+	'all',
+	'bug',
+	'dragon',
+	'fairy',
+	'fire',
+	'ghost',
+	'ground',
+	'normal',
+	'psychic',
+	'steel',
+	'dark',
+	'electric',
+	'fighting',
+	'flying',
+	'grass',
+	'ice',
+	'poison',
+	'rock',
+	'water',
+]

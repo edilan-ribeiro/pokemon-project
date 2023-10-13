@@ -8,6 +8,7 @@ export const TypeFilter = styled.ul`
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
+    max-width: 850px;
 `
 
 export const ItemListFilter = styled.li`

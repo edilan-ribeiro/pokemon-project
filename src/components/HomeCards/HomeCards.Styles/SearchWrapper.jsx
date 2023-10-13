@@ -12,5 +12,6 @@ export const FilterWrapper = styled.div`
         font-size: 25px;
         font-weight: 700;
         color: ${props => props.theme.color};
+        text-align: center;
     }
 `
