@@ -4,7 +4,7 @@ import { WrapperUl } from "./HomeCards.Styles/WrapperUl.Style"
 import { CardsFace } from "./HomeCards.Styles/CardsFace.Style"
 import { ImageWrapper } from "./HomeCards.Styles/ImageWrapper.style"
 import { InfoWrapper } from "./HomeCards.Styles/InfoWrapper.Style"
-import { GeneralButton } from "../GeneralButton/GeneralButton"
+import { HomeLoadButton } from './MainButton/HomeLoadButton'
 import { Link } from "react-router-dom"
 import { numberFill } from "../../utils/numberFill"
 import { TypesList } from "../TypesList/TypesList.Styles"
@@ -117,9 +117,9 @@ export const HomeCards = () => {
 				})}
 			</WrapperUl>
 
-			<GeneralButton handleClick={loadNextPokemon} theme={theme}>
+			<HomeLoadButton handleClick={loadNextPokemon} theme={theme}>
 				load more pokémons {isLoadingMore && <LoaderIcon size={20} color={'#FFF'}/>}
-			</GeneralButton>
+			</HomeLoadButton>
 		</>
 	)
 }

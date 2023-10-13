@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { BaseButton } from "../../GeneralButton/GeneralButton.Styles"
+import { BaseButton } from "../../HomeCards/MainButton/HomeLoadButton.Styles"
 
 export const BackButton = styled(BaseButton)`
     font-size: 20px;
@@ -10,4 +10,6 @@ export const BackButton = styled(BaseButton)`
     text-align: center;
     display: flex;
     text-transform: capitalize;    
+
+    
 `
