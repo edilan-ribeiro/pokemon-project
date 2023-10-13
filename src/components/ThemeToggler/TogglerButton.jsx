@@ -1,12 +1,36 @@
-import { Switch, TogglerInput, Slider } from "./TogglerButton.Styles"
+import { useContext, useState } from "react"
+import { Switch, TogglerInput, Moon, Sun } from "./TogglerButton.Styles"
+import { FaSun, FaMoon } from "react-icons/fa"
+import { ThemeContext } from "../../contexts/ThemeContext"
+import { themes } from "../../styles/themes"
 
-
-// PLACEHOLDER TEM QUE ARRUMAR
 export const TogglerButton = () => {
-    return (
-        <Switch htmlFor="toggler">
-            <TogglerInput type="checkbox" name="" id="toggler" />
-            <Slider  />
-        </Switch>
-    )
+	const { theme, setTheme } = useContext(ThemeContext)
+
+	const [isChecked, setIsChecked] = useState(false)
+
+	const handleCheck = () => {
+		setIsChecked(!isChecked)
+	}
+
+
+	return (
+		<Switch htmlFor="toggler" theme={theme}>
+			<TogglerInput
+				type="checkbox"
+				name="toggler"
+				id="toggler"
+				onChange={handleCheck}
+				onClick={() =>
+					setTheme(theme === themes.light ? themes.dark : themes.light)
+				}
+		    />
+			<Moon>
+				<FaMoon />
+			</Moon>
+			<Sun>
+				<FaSun />
+			</Sun>
+		</Switch>
+	)
 }
