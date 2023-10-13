@@ -8,7 +8,7 @@ import { GeneralButton } from "../GeneralButton/GeneralButton"
 import { Link } from "react-router-dom"
 import { numberFill } from "../../utils/numberFill"
 import { TypesList } from "../TypesList/TypesList.Styles"
-import { types } from "../TypesList/TypesList"
+import { allTypes } from "../TypesList/TypesList"
 import { TypeFilter, ItemListFilter } from "./HomeCards.Styles/TypeFilter.Style.Jsx"
 import { FilterWrapper } from "./HomeCards.Styles/SearchWrapper"
 import { SearchField } from "./HomeCards.Styles/SearchField.Style"
@@ -67,7 +67,7 @@ export const HomeCards = () => {
 			<FilterWrapper  theme={theme}>
 				<p>Filter Pokémon by type</p>
 				<TypeFilter >
-					{types.map((type, index) => (
+					{allTypes.map((type, index) => (
 						<ItemListFilter key={index} type={type} theme={theme}>
 							{type}
 						</ItemListFilter>
