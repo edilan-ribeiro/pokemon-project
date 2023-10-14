@@ -1,20 +1,20 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState, useContext } from "react"
 import { pokemonList, pokemonDetails } from "../../services/poke-api"
 import { WrapperUl } from "./HomeCards.Styles/WrapperUl.Style"
 import { CardsFace } from "./HomeCards.Styles/CardsFace.Style"
 import { ImageWrapper } from "./HomeCards.Styles/ImageWrapper.style"
 import { InfoWrapper } from "./HomeCards.Styles/InfoWrapper.Style"
-import { HomeLoadButton } from './MainButton/HomeLoadButton'
+import { HomeLoadButton } from '../HomeLoadButton/HomeLoadButton'
 import { Link } from "react-router-dom"
 import { numberFill } from "../../utils/numberFill"
 import { TypesList } from "../TypesList/TypesList.Styles"
-import { allTypes } from "../TypesList/TypesList"
-import { TypeFilter, ItemListFilter } from "./HomeCards.Styles/TypeFilter.Style.Jsx"
 import { FilterWrapper } from "./HomeCards.Styles/SearchWrapper"
-import { SearchField } from "./HomeCards.Styles/SearchField.Style"
-import LoaderIcon from 'react-loader-icon'
-import { useContext } from "react"
+import { PokeSearch } from "../PokeSearch/PokeSearch"
+import UseAnimations from "react-useanimations";
+import loading from 'react-useanimations/lib/loading'
 import { ThemeContext } from "../../contexts/ThemeContext"
+import { SearchCard } from "../SearchCard/SearchCard"
+import { TypeForm } from "../TypeForm/TypeForm"
 
 
 export const HomeCards = () => {
@@ -25,6 +25,8 @@ export const HomeCards = () => {
 	const [pokeDetails, setPokeDetails] = useState([])
 	const [nextPokeDetails, setnextPokeDetails] = useState(0)
 	const [isLoadingMore, setIsLoadingMore] = useState(false);
+
+	const [ searchData, setSearchData ] = useState('')
 
 	useEffect(() => {
 		const getListData = async () => {
@@ -58,26 +60,21 @@ export const HomeCards = () => {
 		setIsLoadingMore(false)
 	}
 
-	
-	
-	
+
 
 	return (
 		<>
-			<FilterWrapper  theme={theme}>
+			<FilterWrapper theme={theme}>
 				<p>Filter Pokémon by type</p>
-				<TypeFilter >
-					{allTypes.map((type, index) => (
-						<ItemListFilter key={index} type={type} theme={theme}>
-							{type}
-						</ItemListFilter>
-					))}
-				</TypeFilter>
+				<TypeForm />
 				<p>Or search a specific Pokémon</p>
-				<SearchField type="text" placeholder="Type a pokémon Name or Number"/>
+				<PokeSearch setSearch={setSearchData}/>
 			</FilterWrapper>
 
-			<WrapperUl>
+			{searchData !== '' && <SearchCard searchData={searchData} setSearchData={setSearchData}/>}
+			
+
+			{searchData === '' && <WrapperUl>
 				{pokeDetails.map((poke, index) => {
 
 					let pokeImgUrl
@@ -115,11 +112,11 @@ export const HomeCards = () => {
 						</div>
 					)
 				})}
-			</WrapperUl>
+			</WrapperUl>}
 
-			<HomeLoadButton handleClick={loadNextPokemon} theme={theme}>
-				load more pokémons {isLoadingMore && <LoaderIcon size={20} color={'#FFF'}/>}
-			</HomeLoadButton>
+			{searchData === '' && <HomeLoadButton handleClick={loadNextPokemon} theme={theme}>
+				load more pokémons {isLoadingMore && <UseAnimations animation={loading} size={20} strokeColor={'#FFF'}/>}
+			</HomeLoadButton>}
 		</>
 	)
 }
