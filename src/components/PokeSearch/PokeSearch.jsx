@@ -58,7 +58,11 @@ export const PokeSearch = ({ setSearch }) => {
 					type="text"
 					placeholder="Type a pokémon Name or Number"
 					{...register("search")}
-					onBlur={setTimeout(() => clearErrors(), 10000)}
+					onBlur={() =>
+							setTimeout(() => 
+								clearErrors()
+								, 10000)
+						    }
 				/>
 				<SearchButton type="submit">
 					<FcSearch />
