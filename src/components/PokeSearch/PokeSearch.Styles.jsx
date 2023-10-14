@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const FieldWrapper = styled.div`
+export const FieldWrapper = styled.label`
 position: relative;
 max-width: 350px;    
 `
