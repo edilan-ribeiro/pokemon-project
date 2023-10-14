@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { BaseButton } from "../../HomeCards/MainButton/HomeLoadButton.Styles"
+import { BaseButton } from "../../HomeLoadButton/HomeLoadButton.Styles"
 
 export const BackButton = styled(BaseButton)`
     font-size: 20px;
