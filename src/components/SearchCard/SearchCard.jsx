@@ -9,47 +9,48 @@ import { TypesList } from "../TypesList/TypesList.Styles"
 import { HomeLoadButton } from "../HomeLoadButton/HomeLoadButton"
 import { Link } from "react-router-dom"
 
+export const SearchCard = ({ searchData, setSearchData }) => {
+	const { theme } = useContext(ThemeContext)
 
-
-export const SearchCard = ({searchData, setSearchData}) => {
-
-    const { theme } = useContext(ThemeContext)
-
-    function listReset() {
-		setSearchData('')
+	function listReset() {
+		setSearchData("")
 	}
 
-    return( 
-        
-		<Link to={`${searchData.name}`}>
-         <WrapperUl>
-				<CardsFace type={searchData.types[0].type.name} theme={theme}>
+	return (
+		<>
+			<Link to={`${searchData.name}`}>
+				<WrapperUl>
+					<CardsFace type={searchData.types[0].type.name} theme={theme}>
+						<h1>#{numberFill(searchData.id, 3)}</h1>
 
-					<h1>#{ numberFill(searchData.id, 3) }</h1>
+						<ImageWrapper>
+							<img
+								src={
+									searchData.id < 648
+										? `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${searchData.id}.svg`
+										: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${searchData.id}.png`
+								}
+								alt={`${searchData.name} image`}
+							/>
+						</ImageWrapper>
 
-					<ImageWrapper>
-						<img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${searchData.id}.png`} alt={`${searchData.name} image`} />
-					</ImageWrapper>
+						<InfoWrapper>
+							<h2>{searchData.name}</h2>
+							<ul>
+								{searchData.types.map((pokeType, index) => (
+									<TypesList key={index} type={pokeType.type.name}>
+										{pokeType.type.name}
+									</TypesList>
+								))}
+							</ul>
+						</InfoWrapper>
+					</CardsFace>
+				</WrapperUl>
+			</Link>
 
-					<InfoWrapper>
-						<h2>
-							{searchData.name}
-						</h2>
-						<ul>
-							{searchData.types.map((pokeType, index) => (
-								<TypesList key={index} type={pokeType.type.name}>
-									{pokeType.type.name}
-								</TypesList>
-							))}
-						</ul>
-					</InfoWrapper>
-				</CardsFace>
-			</WrapperUl>
-			
 			<HomeLoadButton handleClick={listReset} theme={theme}>
 				Return to pokémon list
 			</HomeLoadButton>
-		</Link>
-        
-    )
+		</>
+	)
 }
