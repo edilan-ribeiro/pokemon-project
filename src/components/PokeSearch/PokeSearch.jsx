@@ -24,7 +24,7 @@ const createSearchSchema = z.object({
 					  })(Number(value))
 					: value,
 			{ message: "Must be a number between 1 and 1017" }
-		),
+		)
 })
 
 export const PokeSearch = ({ setSearch }) => {
@@ -33,17 +33,24 @@ export const PokeSearch = ({ setSearch }) => {
 		register,
 		handleSubmit,
 		formState: { errors },
+		setError,
+		clearErrors	
 	} = useForm({
-		resolver: zodResolver(createSearchSchema),
-	})
-
+			resolver: zodResolver(createSearchSchema),
+		})
 
 	const getPokemon = async (data) => {
-		const pokemon = await pokemonDetails(data.search)
-		setSearch(pokemon)		
+		try {
+			const pokemon = await pokemonDetails(data.search.toLowerCase())
+			setSearch(pokemon)			
+		} catch (error) {
+			setError('search',{
+				type: 'manual',
+				message:'Pokémon not found, try another Id or Name'
+			})
+		}
 	}
-
-
+	
 	return (
 		<SearchForm onSubmit={handleSubmit(getPokemon)}>
 			<FieldWrapper>
@@ -51,6 +58,7 @@ export const PokeSearch = ({ setSearch }) => {
 					type="text"
 					placeholder="Type a pokémon Name or Number"
 					{...register("search")}
+					onBlur={setTimeout(() => clearErrors(), 10000)}
 				/>
 				<SearchButton type="submit">
 					<FcSearch />
