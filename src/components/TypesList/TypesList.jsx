@@ -1,5 +1,4 @@
 export const whiteTextTypes = [
-	"all",
 	"bug",
 	"dragon",
 	"fire",
@@ -34,7 +33,7 @@ export const typeBgColor = {
 }
 
 export const allTypes = [
-	'all',
+	'All types',
 	'bug',
 	'dragon',
 	'fairy',
