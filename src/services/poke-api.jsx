@@ -8,8 +8,12 @@ export async function pokemonDetails(name) {
 	return await response.json()
 }
 
-
 export async function pokemonAbilities(skillName){
 	const response = await fetch(`https://pokeapi.co/api/v2/ability/${skillName}/`)
+	return await response.json()
+}
+
+export async function pokemonTypes(type) {
+	const response = await fetch(`https://pokeapi.co/api/v2/type/${type}/`)
 	return await response.json()
 }
