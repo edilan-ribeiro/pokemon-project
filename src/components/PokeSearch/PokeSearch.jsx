@@ -62,7 +62,7 @@ export const PokeSearch = ({ setSearchData, setTypeFilter }) => {
 					onBlur={() =>
 							setTimeout(() => 
 								clearErrors()
-								, 10000)
+								, 6000)
 						    }
 				/>
 				<SearchButton type="submit">
