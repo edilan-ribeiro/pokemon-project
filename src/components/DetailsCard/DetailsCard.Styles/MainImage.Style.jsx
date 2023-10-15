@@ -1,6 +1,6 @@
 import styled from "styled-components"
 import { typeBgColor } from "../../TypesList/TypesList"
-import pokeball from "../../../../public/images/project/openball.png"
+import pokeball from "/images/project/openball.png"
 
 export const MainImage = styled.div`
 

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import pokeball from "../../../../public/images/project/Pokeball-bg.png"
+import pokeball from "/images/project/Pokeball-bg.png"
 
 
 export const ImageWrapper = styled.div`
