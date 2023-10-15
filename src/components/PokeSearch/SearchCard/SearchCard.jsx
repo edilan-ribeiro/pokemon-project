@@ -6,14 +6,16 @@ import { numberFill } from "../../../utils/numberFill"
 import { InfoWrapper } from "../../HomeCards/HomeCards.Styles/InfoWrapper.Style"
 import { ImageWrapper } from "../../HomeCards/HomeCards.Styles/ImageWrapper.style"
 import { TypesList } from "../../TypesList/TypesList.Styles"
-import { HomeLoadButton } from "../../HomeLoadButton/HomeLoadButton"
+import { HomeButton } from "../../HomeButton/HomeButton"
 import { Link } from "react-router-dom"
+import { getImageUrl } from "../../../utils/pokeImageUrl"
+
 
 export const SearchCard = ({ searchData, setSearchData }) => {
 	const { theme } = useContext(ThemeContext)
 
 	function listReset() {
-		setSearchData("")
+		setSearchData('')
 	}
 
 	return (
@@ -24,12 +26,9 @@ export const SearchCard = ({ searchData, setSearchData }) => {
 						<h1>#{numberFill(searchData.id, 3)}</h1>
 
 						<ImageWrapper>
+							
 							<img
-								src={
-									searchData.id < 648
-										? `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${searchData.id}.svg`
-										: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${searchData.id}.png`
-								}
+								src={getImageUrl(searchData.id)}
 								alt={`${searchData.name} image`}
 							/>
 						</ImageWrapper>
@@ -48,9 +47,9 @@ export const SearchCard = ({ searchData, setSearchData }) => {
 				</WrapperUl>
 			</Link>
 
-			<HomeLoadButton handleClick={listReset} theme={theme}>
+			<HomeButton handleClick={listReset} theme={theme}>
 				Return to pokémon list
-			</HomeLoadButton>
+			</HomeButton>
 		</>
 	)
 }
