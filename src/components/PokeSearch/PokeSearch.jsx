@@ -27,7 +27,7 @@ const createSearchSchema = z.object({
 		)
 })
 
-export const PokeSearch = ({ setSearch }) => {
+export const PokeSearch = ({ setSearchData, setTypeFilter }) => {
 
 	const {
 		register,
@@ -42,7 +42,8 @@ export const PokeSearch = ({ setSearch }) => {
 	const getPokemon = async (data) => {
 		try {
 			const pokemon = await pokemonDetails(data.search.toLowerCase())
-			setSearch(pokemon)			
+			setSearchData(pokemon)
+			setTypeFilter([])
 		} catch (error) {
 			setError('search',{
 				type: 'manual',
