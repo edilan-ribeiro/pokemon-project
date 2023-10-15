@@ -2,7 +2,7 @@ import { Main } from "./MainContainer.Styles/Main.Style"
 import { Header } from "./MainContainer.Styles/Header.Style"
 import { BackButton } from "./MainContainer.Styles/BackButton.Style"
 import { BiArrowBack } from "react-icons/bi"
-import pokelogo from "../../../public/images/project/poke-logo.svg"
+import pokelogo from "/images/project/poke-logo.svg"
 import { TogglerButton } from "../ThemeToggler/TogglerButton"
 import { Section } from "./MainContainer.Styles/Section.Style"
 import { Link, useLocation } from "react-router-dom"
@@ -23,7 +23,7 @@ export const MainContainer = ({ children }) => {
 				<Header>
 					{location.pathname !== "/" && (
 						<Link to="/">
-							<BackButton title="Return to the home page">
+							<BackButton title="Return to the list">
 								<BiArrowBack />
 							</BackButton>
 						</Link>
