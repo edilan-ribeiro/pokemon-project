@@ -47,7 +47,7 @@ export const PokeSearch = ({ setSearchData, setTypeFilter }) => {
 		} catch (error) {
 			setError('search',{
 				type: 'manual',
-				message:'Pokémon not found, try another Id or Name'
+				message:'Pokémon not found or api failed, try another Id or Name'
 			})
 		}
 	}
