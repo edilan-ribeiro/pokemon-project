@@ -1,19 +1,20 @@
 import styled from "styled-components"
 
 export const Header = styled.header`
-    display:flex;
+    max-width: 1440px;
+    display: flex;
     align-items:center;
     justify-content:center;
-    width: 100%;
+    margin: 0 auto -20px auto;
     position: relative;
-    padding: 20px;
+    padding: 1rem;
 
         img {
             width:310px;
-            margin-bottom: 50px;
+            margin: 50px 0;
         }
 
-        @media (min-width: 830px){
+        @media (min-width: 780px){
             width: 750px;
         }
 `

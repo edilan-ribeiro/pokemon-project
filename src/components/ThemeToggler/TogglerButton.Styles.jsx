@@ -6,8 +6,8 @@ export const Switch = styled.label`
     height: 25px;
     border-radius: 15px;
     position: absolute;
-    right: 0;
-    top: 0;
+    right: 3%;
+    top: 15%;
     margin: 10px;
     align-items: center;
     padding: 5px;

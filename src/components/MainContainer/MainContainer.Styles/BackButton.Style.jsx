@@ -11,5 +11,7 @@ export const BackButton = styled(BaseButton)`
     display: flex;
     text-transform: capitalize;    
 
-    
+    @media (max-width: 780px){
+        left: 2%;
+        }
 `
