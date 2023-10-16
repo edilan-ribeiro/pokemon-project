@@ -11,36 +11,32 @@ import { useContext } from "react"
 import { ThemeContext } from "../../contexts/ThemeContext"
 import { BackgroundContainer } from "./MainContainer.Styles/BackgroundContainer"
 
-
 export const MainContainer = ({ children }) => {
 	const location = useLocation()
 
-	const { theme } = useContext(ThemeContext);
+	const { theme } = useContext(ThemeContext)
 
 	return (
 		<BackgroundContainer theme={theme}>
-			<Main>
-				<Header>
-					{location.pathname !== "/" && (
-						<Link to="/">
-							<BackButton title="Return to the list">
-								<BiArrowBack />
-							</BackButton>
-						</Link>
-					)}
-
+			<Header>
+				{location.pathname !== "/" && (
 					<Link to="/">
-						<img src={pokelogo} alt="Pokemon logo" />
+						<BackButton title="Return to the list">
+							<BiArrowBack />
+						</BackButton>
 					</Link>
-					<TogglerButton />
-				</Header>
+				)}
 
-				<Section>
-					{children}
-				</Section>
+				<Link to="/">
+					<img src={pokelogo} alt="Pokemon logo" />
+				</Link>
+				<TogglerButton />
+			</Header>
+			<Main>		
+				<Section> {children} </Section>
 			</Main>
 			<Footer>
-				Made by <a href="https://edilan-ribeiro.github.io/my-portfolio/" target="_blank">Edilan Ribeiro</a>
+				Made with joy by <a href="https://edilan-ribeiro.github.io/my-portfolio/" target="_blank">Edilan Ribeiro</a>
 			</Footer>
 		</BackgroundContainer>
 	)
