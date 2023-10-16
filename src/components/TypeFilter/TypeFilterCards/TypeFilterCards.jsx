@@ -22,7 +22,10 @@ export const TypeFilterCards = ({ typeFilter, typeDetails, setTypeDetails }) => 
 			const getTypeDetails = async () => {
 				const pokesWithType = await Promise.all(
 					typeFilter.map(selectedPokes => pokemonDetails(selectedPokes.name)))
-				setTypeDetails(pokesWithType)
+
+				const filteredTypeList = pokesWithType.filter(pokemon => pokemon.id <= 1017)
+					
+				setTypeDetails(filteredTypeList)
 			}
 			getTypeDetails()			
 		}
