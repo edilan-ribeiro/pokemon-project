@@ -18,29 +18,35 @@ export const InitialPokemonList = ({ pokeNames, setPokeNames, pokeDetails, setPo
 	const { theme } = useContext(ThemeContext)
 
 	useEffect(() => {		
-		const getListData = async () => {
-			setIsLoading(true)
+		const getListData = async () => {			
 			const pokeApiList = await pokemonList()
 			const pokeNameList = pokeApiList.results
 
 			setPokeNames(pokeNameList)
-			setIsLoading(false)
+		
 		}
 		getListData()
 		
 	}, [])
 
 	useEffect(() => {
-		const getDetailsData = async () => {
-			const pokeDetailsList = await Promise.all(
-				pokeNames.map((pokeAdress) => pokemonDetails(pokeAdress.name))
-			)
-			setPokeDetails(pokeDetailsList)
+		if (pokeNames.length > 0 && pokeDetails.length === 0) {
+				setIsLoading(true)
+			const getDetailsData = async () => {
+				const pokeDetailsList = await Promise.all(
+					pokeNames.map((pokeAdress) => pokemonDetails(pokeAdress.name))
+				)
+				setPokeDetails(pokeDetailsList)
+				setTimeout(() => {
+					setIsLoading(false) 
+				}, 1500); 
+			}
+			getDetailsData()
 		}
-		getDetailsData()
-	}, [pokeNames])
-
-	
+		else{
+			return
+		}
+	}, [pokeNames], [pokeDetails])
 
 	return (
 		<>
