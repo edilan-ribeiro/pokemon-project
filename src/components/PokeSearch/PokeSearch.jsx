@@ -45,7 +45,9 @@ export const PokeSearch = ({ setSearchData, setTypeFilter, setIsLoading }) => {
 			const pokemon = await pokemonDetails(data.search.toLowerCase())
 			setSearchData(pokemon)
 			setTypeFilter([])
-			setIsLoading(false)
+			setTimeout(() => {
+				setIsLoading(false) 
+			}, 1500); 
 		} catch (error) {
 			setError('search',{
 				type: 'manual',
