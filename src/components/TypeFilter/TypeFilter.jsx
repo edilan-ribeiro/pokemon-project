@@ -5,7 +5,7 @@ import { ThemeContext } from "../../contexts/ThemeContext"
 import { useForm } from "react-hook-form"
 import { pokemonTypes } from "../../services/poke-api"
 
-export const TypeFilter = ( { setTypeFilter, searchData, setSearchData } ) => {
+export const TypeFilter = ( { setTypeFilter, searchData, setSearchData, setIsLoading } ) => {
 
     const { theme } = useContext(ThemeContext)
 
@@ -24,9 +24,11 @@ export const TypeFilter = ( { setTypeFilter, searchData, setSearchData } ) => {
                 setSearchData('')
             }
             const getFilteredPoke = async () => {
+                setIsLoading(true)
                 const filteredList = await pokemonTypes(selectedType)                
                 const pokeWithType = filteredList.pokemon.map(poke => poke.pokemon)
-                setTypeFilter(pokeWithType)            
+                setTypeFilter(pokeWithType)      
+                setIsLoading(false)      
             }
             getFilteredPoke()
         }

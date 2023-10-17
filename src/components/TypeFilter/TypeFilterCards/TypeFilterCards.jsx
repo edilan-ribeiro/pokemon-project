@@ -11,7 +11,7 @@ import { numberFill } from "../../../utils/numberFill"
 import { getImageUrl } from "../../../utils/pokeImageUrl"
 
 
-export const TypeFilterCards = ({ typeFilter, typeDetails, setTypeDetails, setIsLoading }) => {
+export const TypeFilterCards = ({ typeFilter, typeDetails, setTypeDetails }) => {
 
 	const { theme } = useContext(ThemeContext)
     
@@ -19,15 +19,13 @@ export const TypeFilterCards = ({ typeFilter, typeDetails, setTypeDetails, setIs
 		if (typeFilter.length < 0) {
 			return 
 		} else {			
-			const getTypeDetails = async () => {
-				setIsLoading(true)
+			const getTypeDetails = async () => {				
 				const pokesWithType = await Promise.all(
 					typeFilter.map(selectedPokes => pokemonDetails(selectedPokes.name)))
 
 				const filteredTypeList = pokesWithType.filter(pokemon => pokemon.id <= 1017)
-					
-				setTypeDetails(filteredTypeList)
-				setIsLoading(false)
+				
+				setTypeDetails(filteredTypeList)		
 			}
 			getTypeDetails()
 			
