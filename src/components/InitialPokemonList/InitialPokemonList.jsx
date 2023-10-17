@@ -4,7 +4,7 @@ import { CardsFace } from "../HomeCards/HomeCards.Styles/CardsFace.Style"
 import { ImageWrapper } from "../HomeCards/HomeCards.Styles/ImageWrapper.style"
 import { InfoWrapper } from "../HomeCards/HomeCards.Styles/InfoWrapper.Style"
 import { getImageUrl } from "../../utils/pokeImageUrl"
-import { useEffect, useContext, useState } from "react"
+import { useEffect, useContext } from "react"
 import { ThemeContext } from "../../contexts/ThemeContext"
 import { pokemonList, pokemonDetails } from "../../services/poke-api"
 import { numberFill } from "../../utils/numberFill"
@@ -13,19 +13,21 @@ import { LoadMoreButton } from "./LoadMoreButton/LoadMoreButton"
 
 
 
-export const InitialPokemonList = ({ pokeNames, setPokeNames, pokeDetails, setPokeDetails }) => {
+export const InitialPokemonList = ({ pokeNames, setPokeNames, pokeDetails, setPokeDetails, setIsLoading }) => {
 	
-	const { theme } = useContext(ThemeContext)	
+	const { theme } = useContext(ThemeContext)
 
-	useEffect(() => {
+	useEffect(() => {		
 		const getListData = async () => {
+			setIsLoading(true)
 			const pokeApiList = await pokemonList()
 			const pokeNameList = pokeApiList.results
 
 			setPokeNames(pokeNameList)
+			setIsLoading(false)
 		}
-
 		getListData()
+		
 	}, [])
 
 	useEffect(() => {
@@ -45,18 +47,15 @@ export const InitialPokemonList = ({ pokeNames, setPokeNames, pokeDetails, setPo
 			<WrapperUl>
 				{pokeDetails.map((poke, index) => {
 					return (
-						<div key={index}>
-							<Link to={`${poke.name}`}>
-								<CardsFace type={poke.types[0].type.name} theme={theme}>
+						<CardsFace type={poke.types[0].type.name} theme={theme} key={index}>
+							<Link to={`${poke.name}`}>								
 									<h1>#{numberFill(poke.id, 3)}</h1>
-
 									<ImageWrapper>
 										<img
 											src={getImageUrl(poke.id)}
 											alt={`${poke.name} image`}
 										/>
 									</ImageWrapper>
-
 									<InfoWrapper>
 										<h2>{poke.name}</h2>
 										<ul>
@@ -66,10 +65,9 @@ export const InitialPokemonList = ({ pokeNames, setPokeNames, pokeDetails, setPo
 												</TypesList>
 											))}
 										</ul>
-									</InfoWrapper>
-								</CardsFace>
+									</InfoWrapper>								
 							</Link>
-						</div>
+						</CardsFace>						
 					)
 				})}
 			</WrapperUl>
