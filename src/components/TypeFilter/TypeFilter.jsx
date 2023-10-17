@@ -28,7 +28,9 @@ export const TypeFilter = ( { setTypeFilter, searchData, setSearchData, setIsLoa
                 const filteredList = await pokemonTypes(selectedType)                
                 const pokeWithType = filteredList.pokemon.map(poke => poke.pokemon)
                 setTypeFilter(pokeWithType)      
-                setIsLoading(false)      
+                setTimeout(() => {
+                    setIsLoading(false) 
+                }, 1500);      
             }
             getFilteredPoke()
         }
