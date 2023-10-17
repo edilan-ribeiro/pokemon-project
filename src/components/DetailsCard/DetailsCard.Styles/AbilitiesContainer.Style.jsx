@@ -9,7 +9,7 @@ export const AbilitiesContainer = styled.div`
 
     li {
         margin: 10px 0;
-        border-bottom: 1px solid #00000021;
+        border-bottom: 1px solid ${props => props.theme.cardInfo};
         padding-bottom: 15px;
         max-width: 370px;
        
