@@ -9,12 +9,14 @@ import { NameTypeContainer } from "./DetailsCard.Styles/NameTypeContainer.Style"
 import { numberFill } from "../../utils/numberFill"
 import { MovesContainer } from "./DetailsCard.Styles/MovesContainer.Style"
 import { TypesList } from "../TypesList/TypesList.Styles"
-import {VscTriangleDown} from 'react-icons/vsc'
+import { VscTriangleDown } from "react-icons/vsc"
 import { SkillInfoToggler } from "./DetailsCard.Styles/SkillInfoToggler"
 import { ThemeContext } from "../../contexts/ThemeContext"
+import { getImageUrl } from "../../utils/pokeImageUrl"
+import { LoadingData } from "../LoadingData/LoadingData"
+import { useSpring, animated } from "@react-spring/web"
 
 export const DetailsCard = () => {
-
 	const { theme } = useContext(ThemeContext)
 
 	const locationName = useLocation()
@@ -38,11 +40,10 @@ export const DetailsCard = () => {
 		getPokeData()
 	}, [])
 
-
 	useEffect(() => {
 		if (dataCheck) {
 			const getSkillsData = async () => {
-				const currentSkillData = skillsName.map(currentSkill =>
+				const currentSkillData = skillsName.map((currentSkill) =>
 					pokemonAbilities(currentSkill)
 				)
 
@@ -50,9 +51,9 @@ export const DetailsCard = () => {
 
 				const skillText = skillData.map((data) => {
 					const englishText = data.effect_entries.find(
-						(entry) => entry.language.name === 'en'
+						(entry) => entry.language.name === "en"
 					)
-					return englishText ? englishText.effect : 'English text not found'
+					return englishText ? englishText.effect : "English text not found"
 				})
 
 				setSkillInfo(skillText)
@@ -63,34 +64,34 @@ export const DetailsCard = () => {
 	}, [dataCheck])
 
 	function handleClick(index) {
-		setSkillDisplayInfo(prevState => {
+		setSkillDisplayInfo((prevState) => {
 			if (prevState.includes(index)) {
-				return prevState.filter(i => i !== index)
+				return prevState.filter((i) => i !== index)
 			} else {
 				return [...prevState, index]
 			}
 		})
 	}
 
-
-	let pokeDetailsImg
-	
-		pokeData.id < 648 
-		? pokeDetailsImg = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${pokeData.id}.svg`
-		: pokeDetailsImg = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokeData.id}.png`
-		
+	const detailsAnimation = useSpring({
+		from: { opacity: 0 },
+		to: { opacity: 1 },
+		config: {
+			duration: 800,
+		},
+	})
 
 	return (
-		<>
-			{dataCheck && (				
+		<animated.div style={detailsAnimation}>
+			{!dataCheck && <LoadingData />}
+			{dataCheck && (
 				<DetailsCardContainer theme={theme}>
 					<MainImage type={pokeData.types[0].type.name}>
 						<img
-							src={pokeDetailsImg}
+							src={getImageUrl(pokeData.id)}
 							alt={`${currentPokeName} image`}
 						/>
 					</MainImage>
-
 					<RightSide>
 						<NameTypeContainer theme={theme}>
 							<div>
@@ -99,49 +100,52 @@ export const DetailsCard = () => {
 							</div>
 							<ul>
 								{pokeData.types.map((pokeTypes, index) => (
-									<TypesList type={pokeTypes.type.name} key={index}>{pokeTypes.type.name} </TypesList>
+									<TypesList type={pokeTypes.type.name} key={index}>
+										{pokeTypes.type.name}{" "}
+									</TypesList>
 								))}
 							</ul>
-					</NameTypeContainer>
-						
-							<AbilitiesContainer>
-								<h3>Abilities</h3>
-								<ul>
-									{pokeData.abilities.map((pokeSkills, index) => {
-										let skillName = pokeSkills.ability.name
+						</NameTypeContainer>
+						<AbilitiesContainer theme={theme}>
+							<h3>Abilities</h3>
+							<ul>
+								{pokeData.abilities.map((pokeSkills, index) => {
+									let skillName = pokeSkills.ability.name
 
-										skillsName.push(skillName)
+									skillsName.push(skillName)
 
-										return (
-											<li key={index}>
-												<p onClick={() => handleClick(index)}>
-														{skillName}
-														<SkillInfoToggler
-														 	theme={theme}
-															$isSkillOpen={skillDisplayInfo.includes(index)}>
-															<VscTriangleDown />
-														</SkillInfoToggler>
-												</p>
-												{skillDisplayInfo.includes(index) && <p>{skillInfo[index]}</p>}
-											</li>
-										)
-									})}
-								</ul>
-							</AbilitiesContainer>							
-							
-							<h3>Moves</h3>
+									return (
+										<li key={index}>
+											<p onClick={() => handleClick(index)}>
+												{skillName}
+												<SkillInfoToggler
+													theme={theme}
+													$isSkillOpen={skillDisplayInfo.includes(index)}
+												>
+													<VscTriangleDown />
+												</SkillInfoToggler>
+											</p>
+											{skillDisplayInfo.includes(index) && (
+												<p>{skillInfo[index]}</p>
+											)}
+										</li>
+									)
+								})}
+							</ul>
+						</AbilitiesContainer>
 
-							<MovesContainer theme={theme}>
-								<ul>
-									{pokeData.moves.map((pokeMoves, index) => (
-										<li key={index}>{pokeMoves.move.name}</li>
-									))}
-								</ul>
-							</MovesContainer>
-						
+						<h3>Moves</h3>
+
+						<MovesContainer theme={theme}>
+							<ul>
+								{pokeData.moves.map((pokeMoves, index) => (
+									<li key={index}>{pokeMoves.move.name}</li>
+								))}
+							</ul>
+						</MovesContainer>
 					</RightSide>
 				</DetailsCardContainer>
 			)}
-		</>
+		</animated.div>
 	)
 }
