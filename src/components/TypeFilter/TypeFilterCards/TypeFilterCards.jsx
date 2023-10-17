@@ -11,23 +11,26 @@ import { numberFill } from "../../../utils/numberFill"
 import { getImageUrl } from "../../../utils/pokeImageUrl"
 
 
-export const TypeFilterCards = ({ typeFilter, typeDetails, setTypeDetails }) => {
+export const TypeFilterCards = ({ typeFilter, typeDetails, setTypeDetails, setIsLoading }) => {
 
 	const { theme } = useContext(ThemeContext)
     
 	useEffect(() => {
 		if (typeFilter.length < 0) {
 			return 
-		} else {
+		} else {			
 			const getTypeDetails = async () => {
+				setIsLoading(true)
 				const pokesWithType = await Promise.all(
 					typeFilter.map(selectedPokes => pokemonDetails(selectedPokes.name)))
 
 				const filteredTypeList = pokesWithType.filter(pokemon => pokemon.id <= 1017)
 					
 				setTypeDetails(filteredTypeList)
+				setIsLoading(false)
 			}
-			getTypeDetails()			
+			getTypeDetails()
+			
 		}
 	},[typeFilter])
 
@@ -35,16 +38,12 @@ export const TypeFilterCards = ({ typeFilter, typeDetails, setTypeDetails }) => 
        <WrapperUl>
 				{typeDetails.map((poke, index) => {
 					return (
-						<div key={index}>
+						<CardsFace type={poke.types[0].type.name} theme={theme} key={index}>
 							<Link to={`${poke.name}`}>
-								<CardsFace type={poke.types[0].type.name} theme={theme}>
-
 									<h1>#{ numberFill(poke.id, 3) }</h1>
-
 									<ImageWrapper>
 										<img src={getImageUrl(poke.id)} alt={`${poke.name} image`} />
 									</ImageWrapper>
-
 									<InfoWrapper>
 										<h2>
 											{poke.name}
@@ -56,10 +55,9 @@ export const TypeFilterCards = ({ typeFilter, typeDetails, setTypeDetails }) => 
 												</TypesList>
 											))}
 										</ul>
-									</InfoWrapper>
-								</CardsFace>
+									</InfoWrapper>								
 							</Link>
-						</div>
+						</CardsFace>
 					)
 				})}
 			</WrapperUl>
