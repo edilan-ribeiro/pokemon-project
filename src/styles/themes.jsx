@@ -5,7 +5,7 @@ export const themes = {
 		border: "#353535",
 		buttonColor: "#95c4d6",
 		shadow: "rgba(0, 0, 0, 0.75)",
-		cardBg: "#505050",
+		cardBg: "#393939",
 		cardInfo: "#e8e8e8",
 	},
 
