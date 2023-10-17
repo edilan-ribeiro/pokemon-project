@@ -24,15 +24,12 @@ export const SearchCard = ({ searchData, setSearchData }) => {
 				<WrapperUl>
 					<CardsFace type={searchData.types[0].type.name} theme={theme}>
 						<h1>#{numberFill(searchData.id, 3)}</h1>
-
-						<ImageWrapper>
-							
+						<ImageWrapper>							
 							<img
 								src={getImageUrl(searchData.id)}
 								alt={`${searchData.name} image`}
 							/>
 						</ImageWrapper>
-
 						<InfoWrapper>
 							<h2>{searchData.name}</h2>
 							<ul>
