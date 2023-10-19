@@ -1,6 +1,6 @@
 import { useContext, useEffect } from "react"
 import { allTypes } from "../TypesList/TypesList"
-import { TypeFormWrapper, FilterList } from "./TypeFilter.Style.Jsx"
+import { TypeFormWrapper, FilterList } from "./TypeFilter.Style"
 import { ThemeContext } from "../../contexts/ThemeContext"
 import { useForm } from "react-hook-form"
 import { pokemonTypes } from "../../services/poke-api"
