@@ -13,7 +13,7 @@ import { LoadMoreButton } from "./LoadMoreButton/LoadMoreButton"
 
 
 
-export const InitialPokemonList = ({ pokeNames, setPokeNames, pokeDetails, setPokeDetails, setIsLoading }) => {
+export const InitialPokemonList = ({ pokeNames, setPokeNames, pokeDetails, setPokeDetails }) => {
 	
 	const { theme } = useContext(ThemeContext)
 
@@ -30,23 +30,15 @@ export const InitialPokemonList = ({ pokeNames, setPokeNames, pokeDetails, setPo
 	}, [])
 
 	useEffect(() => {
-		if (pokeNames.length > 0 && pokeDetails.length === 0) {
-				setIsLoading(true)
 			const getDetailsData = async () => {
 				const pokeDetailsList = await Promise.all(
 					pokeNames.map((pokeAdress) => pokemonDetails(pokeAdress.name))
 				)
 				setPokeDetails(pokeDetailsList)
-				setTimeout(() => {
-					setIsLoading(false) 
-				}, 1500); 
+				
 			}
-			getDetailsData()
-		}
-		else{
-			return
-		}
-	}, [pokeNames], [pokeDetails])
+			getDetailsData()		
+	}, [pokeNames])
 
 	return (
 		<>

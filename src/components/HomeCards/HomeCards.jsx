@@ -26,7 +26,7 @@ export const HomeCards = () => {
 			duration: 800
 		 }
 	  })
-	 
+ 
 	  
 	return (
 		<animated.div style={{...cardAnimation, display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
@@ -57,7 +57,6 @@ export const HomeCards = () => {
 					setPokeNames={setPokeNames}
 					pokeDetails={pokeDetails}
 					setPokeDetails={setPokeDetails}
-					setIsLoading={setIsLoading}
 			/>}			
 			
 			{isLoading && <LoadingData />}
