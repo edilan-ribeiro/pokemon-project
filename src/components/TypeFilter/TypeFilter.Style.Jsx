@@ -21,7 +21,8 @@ export const FilterList = styled.label`
     display: flex;
     justify-content: center;
     align-items: center;
-    
+    transform: ${props => props.selectedtype === props.htmlFor ? 'scale(1.25)' : 'scale(1)'};
+    text-decoration: ${props => props.selectedtype === props.htmlFor ? 'underline' : 'none'};
 
     &:hover{
         box-shadow: 0px 0px 10px 1px ${props => props.theme.shadow};
