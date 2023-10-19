@@ -39,7 +39,7 @@ export const TypeFilter = ( { setTypeFilter, searchData, setSearchData, setIsLoa
     return (
         <TypeFormWrapper>
         {allTypes.map((type, index) => (
-            <FilterList key={index} $typecolor={type} theme={theme} htmlFor={type} selectedtype={selectedType}>
+            <FilterList key={index} $typecolor={type} theme={theme} htmlFor={type} $selectedtype={selectedType}>
                 {type} <input value={type} type="radio" id={type} {...register('typeSelector')}/>
             </FilterList>
         ))}
