@@ -15,19 +15,21 @@ import { ThemeContext } from "../../contexts/ThemeContext"
 import { getImageUrl } from "../../utils/pokeImageUrl"
 import { LoadingData } from "../LoadingData/LoadingData"
 import { useSpring, animated } from "@react-spring/web"
+import { DetailsOfError } from "../ErrorMessage/ErrorMessage.Styles"
 
 export const DetailsCard = () => {
 	const { theme } = useContext(ThemeContext)
 
 	const locationName = useLocation()
 	const currentPokeName = locationName.pathname.slice(1)
-
+	
 	let skillsName = []
 
-	const [pokeData, setPokeData] = useState({})
-	const [dataCheck, setDataCheck] = useState(false)
-	const [skillInfo, setSkillInfo] = useState([])
-	const [skillDisplayInfo, setSkillDisplayInfo] = useState([])
+	const [ pokeData, setPokeData ] = useState({})
+	const [ dataCheck, setDataCheck ] = useState(false)
+	const [ skillInfo, setSkillInfo ] = useState([])
+	const [ skillDisplayInfo, setSkillDisplayInfo ] = useState([])
+	const [ apiError, setApiError ] = useState(false)
 
 	useEffect(() => {
 		const getPokeData = async () => {
@@ -40,6 +42,21 @@ export const DetailsCard = () => {
 		getPokeData()
 	}, [])
 
+	useEffect(() => {
+		const getPokeData = async () => {
+			try {
+				const currentPokemon = await pokemonDetails(currentPokeName)
+
+				setPokeData(currentPokemon)
+				setDataCheck(true)
+			} catch (err) {
+				setApiError(true)
+			}
+		}
+		getPokeData()
+	}, [])
+
+	
 	useEffect(() => {
 		if (dataCheck) {
 			const getSkillsData = async () => {
@@ -83,20 +100,27 @@ export const DetailsCard = () => {
 
 	return (
 		<animated.div style={detailsAnimation}>
-			{!dataCheck && <LoadingData />}
+			{(!dataCheck && !apiError) && <LoadingData />}
+
+			{apiError &&
+			<DetailsOfError theme={theme}>
+				Invalid Pokémon or API failed to respond 
+				<p>please try again</p>
+			</DetailsOfError>}
+
 			{dataCheck && (
 				<DetailsCardContainer theme={theme}>
 					<MainImage type={pokeData.types[0].type.name}>
 						<img
 							src={getImageUrl(pokeData.id)}
-							alt={`${currentPokeName} image`}
+							alt={`${pokeData.name} image`}
 						/>
 					</MainImage>
 					<RightSide>
 						<NameTypeContainer theme={theme}>
 							<div>
 								<h1> #{numberFill(pokeData.id, 3)}</h1>
-								<h2>{currentPokeName}</h2>
+								<h2>{pokeData.name}</h2>
 							</div>
 							<ul>
 								{pokeData.types.map((pokeTypes, index) => (
