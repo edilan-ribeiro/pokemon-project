@@ -1,5 +1,6 @@
 import styled from "styled-components"
-import { typeBgColor } from "../TypesList/TypesList"
+import { typeBgColor, whiteTextTypes } from "../TypesList/TypesList"
+
 
 export const TypeFormWrapper = styled.form`
     display: flex;
@@ -16,7 +17,7 @@ export const FilterList = styled.label`
     padding: 5px 10px;
     border-radius: 15px;
     cursor: pointer;
-    color: #FFFFFF;
+    color: ${props => whiteTextTypes.includes(props.$typecolor) ? '#FFFFFF' : '#000000'};
     transition: all .2s ease-in-out;
     display: flex;
     justify-content: center;
