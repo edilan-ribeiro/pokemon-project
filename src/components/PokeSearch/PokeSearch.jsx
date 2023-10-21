@@ -52,7 +52,7 @@ export const PokeSearch = ({ setSearchData, setTypeFilter, setIsLoading }) => {
 		} catch (error) {
 			setError('search',{
 				type: 'manual',
-				message:'Pokémon not found or api failed, try another Id or Name.\n Note: The search must be exact!'
+				message:'Pokémon not found or api failed, try another Id or Name.\n The search must be exact!\n Example: mr-mime returns Mr Mime'
 			})
 			setTimeout(() => {
 				setIsLoading(false) 
