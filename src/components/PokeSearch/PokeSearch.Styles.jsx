@@ -2,18 +2,18 @@ import styled from "styled-components";
 
 export const FieldWrapper = styled.label`
 position: relative;
-max-width: 350px;    
 `
 
 export const SearchForm = styled.form`
     display: flex;
     flex-direction: column;
     text-align: center;
-
+        
     span {
       color: #fc5454;
       font-size: 13px;
       margin: -8px 0 20px 0;
+      line-height: 20px;
     }
 `
 
@@ -24,10 +24,8 @@ export const SearchField = styled.input`
   margin: 8px 0;
   border: none;
   border: 2px solid #07b2eb;
-  border-radius: 20px;
-  
+  border-radius: 20px;  
   transition: all 0.2s ease-in-out;
- 
   
   &:focus {
     border: 2px solid #009933;
