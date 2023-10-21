@@ -12,6 +12,7 @@ const createSearchSchema = z.object({
 		.refine((value) => value !== "0", {
 			message: "There is no pokemon with id 0",
 		})
+		.refine(value => !value.includes(' '), "PokeApi doesn't allow spaces in name, try to use a hyphen instead!")
 		.refine(
 			(value) =>
 				/^\d+$/.test(value)
@@ -51,11 +52,11 @@ export const PokeSearch = ({ setSearchData, setTypeFilter, setIsLoading }) => {
 		} catch (error) {
 			setError('search',{
 				type: 'manual',
-				message:'Pokémon not found or api failed, try another Id or Name'
+				message:'Pokémon not found or api failed, try another Id or Name.\n Note: The search must be exact!'
 			})
 			setTimeout(() => {
 				setIsLoading(false) 
-			}, 1000)			
+			}, 1000)
 		}
 	}
 	
