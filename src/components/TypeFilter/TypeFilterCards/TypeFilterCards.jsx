@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 import { WrapperUl } from "../../HomeCards/HomeCards.Styles/WrapperUl.Style"
 import { CardsFace } from "../../HomeCards/HomeCards.Styles/CardsFace.Style"
-import { ImageWrapper } from "../../HomeCards/HomeCards.Styles/ImageWrapper.style"
+import { ImageWrapper } from "../../HomeCards/HomeCards.Styles/ImageWrapper.Style"
 import { InfoWrapper } from "../../HomeCards/HomeCards.Styles/InfoWrapper.Style"
 import { TypesList } from "../../TypesList/TypesList.Styles"
 import { useEffect, useContext } from "react"
