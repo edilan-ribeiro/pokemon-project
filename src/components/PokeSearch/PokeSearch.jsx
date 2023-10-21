@@ -47,12 +47,15 @@ export const PokeSearch = ({ setSearchData, setTypeFilter, setIsLoading }) => {
 			setTypeFilter([])
 			setTimeout(() => {
 				setIsLoading(false) 
-			}, 1500); 
+			}, 1500)
 		} catch (error) {
 			setError('search',{
 				type: 'manual',
 				message:'Pokémon not found or api failed, try another Id or Name'
 			})
+			setTimeout(() => {
+				setIsLoading(false) 
+			}, 1000)			
 		}
 	}
 	
