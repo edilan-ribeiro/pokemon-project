@@ -18,7 +18,7 @@ export const MainContainer = ({ children }) => {
 
 	return (
 		<BackgroundContainer theme={theme}>
-			<Header>
+			<Header theme={theme}>
 				{location.pathname !== "/" && (
 					<Link to="/">
 						<BackButton title="Return to the list">
@@ -30,13 +30,14 @@ export const MainContainer = ({ children }) => {
 				<Link to="/">
 					<img src={pokelogo} alt="Pokemon logo" />
 				</Link>
+				<p>Powered by PokeApi</p>
 				<TogglerButton />
 			</Header>
 			<Main>		
 				<Section> {children} </Section>
 			</Main>
 			<Footer>
-				Made with joy by <a href="https://edilan-ribeiro.github.io/my-portfolio/" target="_blank">Edilan Ribeiro</a>
+				Made with joy by <a href="https://edilan-ribeiro.github.io/my-portfolio/" target="_blank">Edilan Ribeiro</a> <br/>
 			</Footer>
 		</BackgroundContainer>
 	)
