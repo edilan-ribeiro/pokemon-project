@@ -8,12 +8,14 @@ export const SearchForm = styled.form`
     display: flex;
     flex-direction: column;
     text-align: center;
+    max-width: 330px;
         
     span {
       color: #fc5454;
       font-size: 13px;
       margin: -8px 0 20px 0;
       line-height: 20px;
+      white-space: pre-line
     }
 `
 
