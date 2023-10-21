@@ -23,7 +23,7 @@
     It shows pokemon data!
   </p>
   
-  <a href="https://pokemon-project-coral.vercel.app/">View Demo</a>
+  <a href="https://pokemon-project-rho.vercel.app/">View Demo</a>
 </div>
 
 <br>
