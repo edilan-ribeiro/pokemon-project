@@ -25,8 +25,5 @@ describe("checks if the main container is displaying all components", () => {
 
 		const footerText = screen.getByText(/Edilan Ribeiro/i)
 		expect(footerText).toHaveAttribute('href', 'https://edilan-ribeiro.github.io/my-portfolio/')
-		screen.debug()
-
-
 	})
 })
