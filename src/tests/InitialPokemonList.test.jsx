@@ -1,5 +1,6 @@
 import "@testing-library/jest-dom"
-import { fireEvent, render, screen, waitFor } from "@testing-library/react"
+import { render, screen } from "@testing-library/react"
+import userEvent from "@testing-library/user-event"
 import { describe, expect } from "vitest"
 import "vitest-canvas-mock"
 import { BrowserRouter } from "react-router-dom"
@@ -7,8 +8,6 @@ import { HomeCards } from "../components/HomeCards/HomeCards"
 import { InitialPokemonList } from "../components/InitialPokemonList/InitialPokemonList"
 import { server } from "../mocks/handlers"
 import { LoadMoreButton } from "../components/InitialPokemonList/LoadMoreButton/LoadMoreButton"
-import userEvent from "@testing-library/user-event"
-
 
 describe("checks if the initial render cards are working correctly", () => {
 	beforeAll(() => server.listen())
@@ -34,5 +33,32 @@ describe("checks if the initial render cards are working correctly", () => {
 
 		expect(screen.getByText(/load more pokémons/i)).toBeInTheDocument()
 		
+	}),
+
+	it("should fetch the next batch of pokemon cards and show on the screen", async () =>{
+		beforeAll(() => server.listen())
+		afterEach(() => server.resetHandlers())
+		afterAll(() => server.close())
+
+		render(
+			<BrowserRouter>
+				<HomeCards>
+					<InitialPokemonList>
+						<LoadMoreButton/>
+					</InitialPokemonList>			
+				</HomeCards>
+			</BrowserRouter>
+		)
+
+		const charizardElement = await screen.findByText(/charizard/i)	
+		expect(charizardElement).toBeInTheDocument()
+		
+						
+		const loadMoreButon = screen.getByText(/load more pokémons/i)
+		await userEvent.click(loadMoreButon)
+			
+			
+		const squirtleData = await screen.findByText('squirtle')
+		expect(squirtleData).toBeInTheDocument()		
 	})
 })
