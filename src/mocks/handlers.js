@@ -15,27 +15,16 @@ import caterpieData from "./dataMock/details-mock/caterpieData.json"
 import metapodData from "./dataMock/details-mock/metapodData.json"
 import butterfreeData from "./dataMock/details-mock/butterfreeData.json"
 
-
-
 const handlers = [
 	rest.get("https://pokeapi.co/api/v2/pokemon", (req, res, ctx) => {
 		req.url.searchParams.get("limit=12")
+		const offset = req.url.searchParams.get("offset")
 
-		if ('offset=0'){
-			req.url.searchParams.get("offset=0")
-			return res(ctx.status(200), ctx.json(ListMock1))
+		if (offset === '12') {
+			return res (ctx.status(200), ctx.json(ListMock2))
 		} else {
-			return res(ctx.status(200), ctx.json(ListMock2))
+			return res (ctx.status(200), ctx.json(ListMock1))
 		}
-		
-		
-	}),
-
-	rest.get("https://pokeapi.co/api/v2/pokemon", (req, res, ctx) => {
-		console.log('teste')
-		req.url.searchParams.get("limit=12")
-		req.url.searchParams.get("offset=12")
-		return res(ctx.status(200), ctx.json(ListMock2))
 	}),
 
 	rest.get("https://pokeapi.co/api/v2/pokemon/:name", (req, res, ctx) => {
