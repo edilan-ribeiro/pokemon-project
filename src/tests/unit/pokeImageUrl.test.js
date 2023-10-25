@@ -1,7 +1,7 @@
 import { describe, expect } from "vitest"
-import { getImageUrl } from "../utils/pokeImageUrl"
+import { getImageUrl } from "../../utils/pokeImageUrl"
 
-describe('Tests if the getImageUrl function is returning the correct url acording to its parameters', () => {
+describe('tests if the getImageUrl function is returning the correct url acording to its parameters', () => {
 
     it('should return a url that matches the ID of a given pokemon', () => {
         

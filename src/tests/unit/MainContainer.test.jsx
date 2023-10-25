@@ -3,15 +3,15 @@ import { render, screen } from "@testing-library/react"
 import { BrowserRouter } from "react-router-dom"
 import { describe, expect } from "vitest"
 import "vitest-canvas-mock"
-import { MainContainer } from "../components/MainContainer/MainContainer"
+import { MainContainer } from "../../components/MainContainer/MainContainer"
 
 describe("checks if the main container is displaying all components", () => {	
 
-	it("should display header section, the theme toggler input and the footer section",  () => {
+	it("should display header section, the theme toggler input and the footer section", () =>  {
 		render(
 			<BrowserRouter>
-				<MainContainer />
-			</BrowserRouter>			
+				<MainContainer />	
+			</BrowserRouter>	
 		)
 
 		const headerText = screen.getByText(/Powered by PokeApi/i)

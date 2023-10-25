@@ -4,10 +4,10 @@ import userEvent from "@testing-library/user-event"
 import { describe, expect } from "vitest"
 import "vitest-canvas-mock"
 import { BrowserRouter } from "react-router-dom"
-import { server } from "../mocks/handlers"
-import { HomeCards } from "../components/HomeCards/HomeCards"
-import { InitialPokemonList } from "../components/InitialPokemonList/InitialPokemonList"
-import { LoadMoreButton } from "../components/InitialPokemonList/LoadMoreButton/LoadMoreButton"
+import { server } from "../../mocks/handlers"
+import { HomeCards } from "../../components/HomeCards/HomeCards"
+import { InitialPokemonList } from "../../components/InitialPokemonList/InitialPokemonList"
+import { LoadMoreButton } from "../../components/InitialPokemonList/LoadMoreButton/LoadMoreButton"
 
 describe("checks if the initial render cards are working correctly", () => {
 	beforeAll(() => server.listen())

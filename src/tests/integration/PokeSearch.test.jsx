@@ -4,12 +4,9 @@ import userEvent from "@testing-library/user-event"
 import { afterAll, afterEach, beforeAll, describe, expect } from "vitest"
 import "vitest-canvas-mock"
 import { BrowserRouter } from "react-router-dom"
-import { server } from "../mocks/handlers"
-import { PokeSearch } from "../components/PokeSearch/PokeSearch"
-import { SearchCard } from "../components/PokeSearch/SearchCard/SearchCard"
-import { HomeCards } from "../components/HomeCards/HomeCards"
-import { LoadingData } from "../components/LoadingData/LoadingData"
-import { ThemeProvider } from "../contexts/ThemeContext"
+import { server } from "../../mocks/handlers"
+import { HomeCards } from "../../components/HomeCards/HomeCards"
+import { ThemeProvider } from "../../contexts/ThemeContext"
 
 describe("checks if the search is working as a whole, will verify input, validation, submit and card display", () => {
 	beforeAll(() => server.listen())
@@ -19,10 +16,7 @@ describe("checks if the search is working as a whole, will verify input, validat
 	it("should display an error message if tries to search with the field empty", async () => {
 		render(
 			<BrowserRouter>
-				<HomeCards>
-					<PokeSearch />
-					<SearchCard />
-				</HomeCards>
+				<HomeCards />
 			</BrowserRouter>
 		)        
         
@@ -37,10 +31,7 @@ describe("checks if the search is working as a whole, will verify input, validat
     it("should display an error message if the user tries to search with the pokemon ID being 0", async () => {
 		render(
 			<BrowserRouter>
-				<HomeCards>
-					<PokeSearch />
-					<SearchCard />
-				</HomeCards>
+				<HomeCards />
 			</BrowserRouter>
 		)        
         
@@ -57,10 +48,7 @@ describe("checks if the search is working as a whole, will verify input, validat
     it("should display an error if the user tries to search with a space in the search field", async () => {
 		render(
 			<BrowserRouter>
-				<HomeCards>
-					<PokeSearch />
-					<SearchCard />
-				</HomeCards>
+				<HomeCards />
 			</BrowserRouter>
 		)        
         
@@ -77,10 +65,7 @@ describe("checks if the search is working as a whole, will verify input, validat
     it("should display an error if the user tries to search with a number from 1018 and beyond", async () => {
 		render(
 			<BrowserRouter>
-				<HomeCards>
-					<PokeSearch />
-					<SearchCard />
-				</HomeCards>
+				<HomeCards />
 			</BrowserRouter>
 		)        
         
@@ -98,11 +83,7 @@ describe("checks if the search is working as a whole, will verify input, validat
 		render(
 			<BrowserRouter>
                 <ThemeProvider>
-                    <HomeCards>
-                        <PokeSearch />
-                        <SearchCard />
-                        <LoadingData />
-                    </HomeCards>
+					<HomeCards />
                 </ThemeProvider>
 			</BrowserRouter>
 		)        
@@ -121,10 +102,7 @@ describe("checks if the search is working as a whole, will verify input, validat
 		render(
 			<BrowserRouter>
                 <ThemeProvider>
-                    <HomeCards>
-                        <PokeSearch />
-                        <SearchCard />
-                    </HomeCards>
+					<HomeCards />
                 </ThemeProvider>
 			</BrowserRouter>
 		)        

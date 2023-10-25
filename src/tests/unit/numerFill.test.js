@@ -1,7 +1,7 @@
 import { describe, expect } from "vitest"
-import { numberFill } from "../utils/numberFill"
+import { numberFill } from "../../utils/numberFill"
 
-describe('Testing function to fill number space', () => {
+describe('testing function to fill number space', () => {
 
     it('should fill the empty space of a string with zeroes acording to its lenght', () => {
        

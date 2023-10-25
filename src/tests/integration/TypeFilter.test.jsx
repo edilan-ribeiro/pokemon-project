@@ -4,9 +4,9 @@ import userEvent from "@testing-library/user-event"
 import { afterAll, afterEach, beforeAll, describe, expect } from "vitest"
 import "vitest-canvas-mock"
 import { BrowserRouter } from "react-router-dom"
-import { server } from "../mocks/handlers"
-import { HomeCards } from "../components/HomeCards/HomeCards"
-import { ThemeProvider } from "../contexts/ThemeContext"
+import { server } from "../../mocks/handlers"
+import { HomeCards } from "../../components/HomeCards/HomeCards"
+import { ThemeProvider } from "../../contexts/ThemeContext"
 
 describe("checks if the filter from the radio options is working", () => {
 	beforeAll(() => server.listen())
@@ -34,7 +34,7 @@ describe("checks if the filter from the radio options is working", () => {
 		expect(resultgengar).toBeInTheDocument()
 	}),
 
-	it("should select the ice radio option and recieve a pokemon list with only pokemons with ice type", async () => {
+	it("should select the ice radio option and recieve a pokemon list with only pokemons with ice type, after that it should click the All types option to return to erase the type selection", async () => {
 		render(
 			<BrowserRouter>
 				<ThemeProvider>
@@ -43,7 +43,8 @@ describe("checks if the filter from the radio options is working", () => {
 			</BrowserRouter>
 		)
         
-		const iceRadio = screen.getByRole('radio', {name: 'ice'})        
+		//gets ice type
+		const iceRadio = screen.getByRole('radio', {name: 'ice'})
         await userEvent.click(iceRadio)
        
         const resultArticuno = await screen.findByText(/articuno/i, undefined, {timeout:2000})
@@ -51,5 +52,10 @@ describe("checks if the filter from the radio options is working", () => {
 
 		expect(resultArticuno).toBeInTheDocument()
 		expect(resultLapras).toBeInTheDocument()
+
+		const allTypesRadio = screen.getByRole('radio', {name: 'All types'})
+		await userEvent.click(allTypesRadio)
+
+		expect(screen.getByText('charizard')).toBeInTheDocument()
 	})
 })
