@@ -31,28 +31,40 @@ const handlers = [
 		const name = req.params.name
 		switch (name) {
 			case "bulbasaur":
+			case '1':
 				return res(ctx.json(bulbasaurData))
 			case "ivysaur":
+			case '2':
 				return res(ctx.json(ivysaurData))
 			case "venusaur":
+			case '3':
 				return res(ctx.json(venusaurData))
 			case "charmander":
+			case '4':
 				return res(ctx.json(charmanderData))
 			case "charmeleon":
+			case '5':
 				return res(ctx.json(charmeleonData))
 			case "charizard":
+			case '6':
 				return res(ctx.json(charizardData))
 			case "squirtle":
+			case '7':
 				return res(ctx.json(squirtleData))
 			case "wartortle":
+			case '8':
 				return res(ctx.json(wartortleData))
 			case "blastoise":
+			case '9':
 				return res(ctx.json(blastoiseData))
 			case "caterpie":
+			case '10':
 				return res(ctx.json(caterpieData))
 			case "metapod":
+			case '11':
 				return res(ctx.json(metapodData))
 			case "butterfree":
+			case '12':
 				return res(ctx.json(butterfreeData))
 			default:
 				return res(ctx.status(404))
