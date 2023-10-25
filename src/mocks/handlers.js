@@ -21,6 +21,8 @@ import articunoData from "./dataMock/details-mock/articunoData.json"
 import laprasData from "./dataMock/details-mock/laprasData.json"
 import ghostData from "./dataMock/types-mock/ghostData.json"
 import iceData from "./dataMock/types-mock/iceData.json"
+import overgrowData from "./dataMock/abilities-mock/overgrowData.json"
+import chlorophyllData from "./dataMock/abilities-mock/chlorophyllData.json"
 
 const handlers = [
 	rest.get("https://pokeapi.co/api/v2/pokemon", (req, res, ctx) => {
@@ -94,17 +96,30 @@ const handlers = [
 		}
 	}),
 
-	rest.get('https://pokeapi.co/api/v2/type/:type', (req, res, ctx) => {
-	const type = req.params.type
+	rest.get('https://pokeapi.co/api/v2/ability/:skillName', (req, res, ctx) => {
+		const skillName = req.params.skillName
 
-	switch (type) {
-		case "ice":
-			return res(ctx.json(iceData))	
-		case "ghost":
-			return res(ctx.json(ghostData))
-		default:
-			return res(ctx.status(404))
+		switch (skillName) {
+			case "overgrow": 
+				return res(ctx.json(overgrowData))
+			case "chlorophyll":
+				return res(ctx.json(chlorophyllData))
+			default:
+				return res(ctx.status(404))
 		}
+	}),
+
+	rest.get('https://pokeapi.co/api/v2/type/:type', (req, res, ctx) => {
+		const type = req.params.type
+
+		switch (type) {
+			case "ice":
+				return res(ctx.json(iceData))	
+			case "ghost":
+				return res(ctx.json(ghostData))
+			default:
+				return res(ctx.status(404))
+			}
 	})
 ]
 
