@@ -4,9 +4,9 @@ import userEvent from "@testing-library/user-event"
 import { describe, expect } from "vitest"
 import "vitest-canvas-mock"
 import { BrowserRouter } from "react-router-dom"
+import { server } from "../mocks/handlers"
 import { HomeCards } from "../components/HomeCards/HomeCards"
 import { InitialPokemonList } from "../components/InitialPokemonList/InitialPokemonList"
-import { server } from "../mocks/handlers"
 import { LoadMoreButton } from "../components/InitialPokemonList/LoadMoreButton/LoadMoreButton"
 
 describe("checks if the initial render cards are working correctly", () => {
@@ -53,11 +53,9 @@ describe("checks if the initial render cards are working correctly", () => {
 		const charizardElement = await screen.findByText(/charizard/i)	
 		expect(charizardElement).toBeInTheDocument()
 		
-						
 		const loadMoreButon = screen.getByText(/load more pokémons/i)
 		await userEvent.click(loadMoreButon)
-			
-			
+					
 		const squirtleData = await screen.findByText('squirtle')
 		expect(squirtleData).toBeInTheDocument()		
 	})
