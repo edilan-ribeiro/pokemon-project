@@ -1,0 +1,19 @@
+{
+    "name": "ice",
+    "pokemon": [    
+      {
+        "pokemon": {
+          "name": "lapras",
+          "url": "https://pokeapi.co/api/v2/pokemon/131/"
+        },
+        "slot": 2
+      },
+      {
+        "pokemon": {
+          "name": "articuno",
+          "url": "https://pokeapi.co/api/v2/pokemon/144/"
+        },
+        "slot": 1
+      }
+    ]
+}
