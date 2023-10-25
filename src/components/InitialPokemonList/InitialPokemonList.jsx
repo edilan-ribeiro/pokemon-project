@@ -19,7 +19,7 @@ export const InitialPokemonList = ({ pokeNames, setPokeNames, pokeDetails, setPo
 
 	useEffect(() => {		
 		const getListData = async () => {			
-			const pokeApiList = await pokemonList()
+			const pokeApiList = await pokemonList(0)
 			const pokeNameList = pokeApiList.results
 
 			setPokeNames(pokeNameList)

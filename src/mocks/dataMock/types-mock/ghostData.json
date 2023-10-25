@@ -1,0 +1,26 @@
+{
+    "name": "ghost",
+    "pokemon": [
+      {
+        "pokemon": {
+          "name": "gastly",
+          "url": "https://pokeapi.co/api/v2/pokemon/92/"
+        },
+        "slot": 1
+      },
+      {
+        "pokemon": {
+          "name": "haunter",
+          "url": "https://pokeapi.co/api/v2/pokemon/93/"
+        },
+        "slot": 1
+      },
+      {
+        "pokemon": {
+          "name": "gengar",
+          "url": "https://pokeapi.co/api/v2/pokemon/94/"
+        },
+        "slot": 1
+      }
+    ]
+}

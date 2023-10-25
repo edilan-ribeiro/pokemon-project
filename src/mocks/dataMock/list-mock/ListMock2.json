@@ -1,0 +1,31 @@
+{
+    "count": 1292,
+    "next": "https://pokeapi.co/api/v2/pokemon?offset=60&limit=60",
+    "previous": null,
+    "results": [
+      {
+        "name": "squirtle",
+        "url": "https://pokeapi.co/api/v2/pokemon/7/"
+      },
+      {
+        "name": "wartortle",
+        "url": "https://pokeapi.co/api/v2/pokemon/8/"
+      },
+      {
+        "name": "blastoise",
+        "url": "https://pokeapi.co/api/v2/pokemon/9/"
+      },
+      {
+        "name": "caterpie",
+        "url": "https://pokeapi.co/api/v2/pokemon/10/"
+      },
+      {
+        "name": "metapod",
+        "url": "https://pokeapi.co/api/v2/pokemon/11/"
+      },
+      {
+        "name": "butterfree",
+        "url": "https://pokeapi.co/api/v2/pokemon/12/"
+      }
+    ]
+  }
