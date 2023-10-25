@@ -89,7 +89,7 @@ To build the project, it was necessary to use several additional libraries, such
 - useAnimations: for loading
 - React Icons: for icons
 
-Although many developers have already done similar projects (is this a <a href="https://media.tenor.com/GESYbde0oaYAAAAd/canon-event-lochan-bwefi.gif">canon event</a>? 🕸), the experience of building the components, dealing with various conditions, and handling the API calls was incredibly enriching. The process not only solidified my practical understanding, but also provided valuable insights into code architecture and optimization.
+Although many developers have already done similar projects (is this a <a href="https://media.tenor.com/GESYbde0oaYAAAAd/canon-event-lochan-bwefi.gif"  target="_blank">canon event</a>? 🕸), the experience of building the components, dealing with various conditions, and handling the API calls was incredibly enriching. The process not only solidified my practical understanding, but also provided valuable insights into code architecture and optimization.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -125,6 +125,8 @@ To avoid this, it was necessary to create a rule that checks the input type with
 
 🎨 The design was complicated because I'm not the most creative person in the world. Navigating through the intricate details of the design required careful consideration of each visual element. Confronting this challenge allowed me to explore and develop strategies to overcome some of the limitations of my less creative approach, resulting in a design that, while challenging, turned out to be a significant achievement.
 
+📑TESTS! Developing tests for a React website presented stimulating challenges. The intricate nature of the functionalities required a meticulous approach, emphasizing the need for comprehensive coverage in automated testing. Fortunately, the complete establishment of the testing framework significantly boosted confidence in the code's quality, fostering a deeper understanding of testing processes.
+
 In summary, it was possible to learn and practice:
 - Components and modification of props
 - Forms and validations using React Hook Form and Zod
@@ -140,7 +142,18 @@ After cloning, downloading, or forking, use the command below to install the pro
 ```shell
 npm install
 ```
+To run the tests use the command:
+```shell
+npm test
+```
 
+This project allows you to:
+- Frontend Tests with the React testing library
+- Search for a Pokémon by name
+- Search for a Pokémon by ID
+- Filter Pokémon by type
+- View details such as types, abilities, and moves of a desired Pokémon
+- As a developer, run the aplication tests!
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

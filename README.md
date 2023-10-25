@@ -87,8 +87,9 @@ Para construção do projeto foi necessário o uso de diversas bibliotecas adici
 - React Router: para gerenciar o caminho das páginas
 - useAnimations: para carregamento
 - React Icons: para ícones
+- React testing library + Vitest + Jsdom: para realização dos testes
 
-Embora muitos desenvolvedores já tenham realizado projetos semelhantes (seria este um <a href="https://media.tenor.com/GESYbde0oaYAAAAd/canon-event-lochan-bwefi.gif">evento canônico</a>? 🕸), a experiência de construir os componentes, lidar com diversas condições e lidar com as chamadas de api foi incrivelmente enriquecedora. O processo não apenas solidificou meu entendimento prático, mas também proporcionou insights valiosos sobre a arquitetura e a otimização do código.
+Embora muitos desenvolvedores já tenham realizado projetos semelhantes (seria este um <a href="https://media.tenor.com/GESYbde0oaYAAAAd/canon-event-lochan-bwefi.gif" target="_blank">evento canônico</a>? 🕸), a experiência de construir os componentes, lidar com diversas condições e lidar com as chamadas de api foi incrivelmente enriquecedora. O processo não apenas solidificou meu entendimento prático, mas também proporcionou insights valiosos sobre a arquitetura e a otimização do código.
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -119,13 +120,15 @@ Para evitar isso foi necessário criar uma regra que verifica o tipo de input co
 		{ message: "Must be a number between 1 and 1017" }
  )
 ```
- 
+
 💅 Um novo aprendizado foi o uso de Styled Components para ter os estilos dentro dos componentes, as maiores vantagens estão em saber exatamente aonde esta o estilo daquele pedaço específico do código e o uso de props para modificar o estilo de forma condicional.
 
 🎨 O design foi complicado porque não sou a pessoa mais criativa do mundo, ter de navegar pelos intricados detalhes do design exigiu uma consideração cuidadosa de cada elemento visual. Ao enfrentar esse desafio, pude explorar e desenvolver estratégias para superar um pouco as limitações da minha abordagem menos criativa, resultando em um design que, embora desafiador, acabou sendo uma conquista significativa.
 
+📑TESTES! Desenvolver testes para um site React proporcionou desafios estimulantes. A intricada natureza das funcionalidades demandou uma abordagem meticulosa, enfatizando a necessidade de uma cobertura abrangente na testagem automatizada. A criação completa da estrutura de testes, felizmente, elevou consideravelmente a confiança na qualidade do código, proporcionando uma compreensão mais aprofundada nos processos de teste.
 
 Em resumo foi possível aprender e praticar:
+ - Testes frontend com React testing library
  - Componentes e modificação props
  - Formulários e validações usando react hook form e zod
  - Aplicação de useContext
@@ -141,6 +144,18 @@ Após clonar, baixar ou fazer um fork, utilize o comando abaixo para instalar as
 ```shell
 npm install
 ```
+
+Para rodar os testes utilize:
+```shell
+npm test
+```
+
+Esse projeto te permite:
+- Buscar pelo nome de um pokémon
+- Buscar pelo ID de um pokémon
+- Filtrar pokémons por tipo
+- Ver detalhes como tipos, habilidades e movimentos de um pokémon desejado
+- Como desenvolvedor, rodar testes na aplicação!
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
