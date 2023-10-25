@@ -14,6 +14,13 @@ import blastoiseData from "./dataMock/details-mock/blastoiseData.json"
 import caterpieData from "./dataMock/details-mock/caterpieData.json"
 import metapodData from "./dataMock/details-mock/metapodData.json"
 import butterfreeData from "./dataMock/details-mock/butterfreeData.json"
+import gastlyData from "./dataMock/details-mock/gastlyData.json"
+import haunterData from "./dataMock/details-mock/haunterData.json"
+import gengarData from "./dataMock/details-mock/gengarData.json"
+import articunoData from "./dataMock/details-mock/articunoData.json"
+import laprasData from "./dataMock/details-mock/laprasData.json"
+import ghostData from "./dataMock/types-mock/ghostData.json"
+import iceData from "./dataMock/types-mock/iceData.json"
 
 const handlers = [
 	rest.get("https://pokeapi.co/api/v2/pokemon", (req, res, ctx) => {
@@ -29,6 +36,7 @@ const handlers = [
 
 	rest.get("https://pokeapi.co/api/v2/pokemon/:name", (req, res, ctx) => {
 		const name = req.params.name
+		
 		switch (name) {
 			case "bulbasaur":
 			case '1':
@@ -66,10 +74,38 @@ const handlers = [
 			case "butterfree":
 			case '12':
 				return res(ctx.json(butterfreeData))
+			case "gastly":
+			case '92':
+				return res(ctx.json(gastlyData))
+			case "haunter":
+			case '93':
+				return res(ctx.json(haunterData))
+			case "gengar":
+			case '94':
+				return res(ctx.json(gengarData))
+			case "articuno":
+			case '144':
+				return res(ctx.json(articunoData))
+			case "lapras":
+			case '131':
+				return res(ctx.json(laprasData))
 			default:
 				return res(ctx.status(404))
 		}
 	}),
+
+	rest.get('https://pokeapi.co/api/v2/type/:type', (req, res, ctx) => {
+	const type = req.params.type
+
+	switch (type) {
+		case "ice":
+			return res(ctx.json(iceData))	
+		case "ghost":
+			return res(ctx.json(ghostData))
+		default:
+			return res(ctx.status(404))
+		}
+	})
 ]
 
 export const server = setupServer(...handlers)
