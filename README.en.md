@@ -88,6 +88,8 @@ To build the project, it was necessary to use several additional libraries, such
 - React Router: to manage the pages
 - useAnimations: for loading
 - React Icons: for icons
+- React testing library + Vitest + Jsdom: to create and run the tests
+- Mock Service Worker: to mock the API data
 
 Although many developers have already done similar projects (is this a <a href="https://media.tenor.com/GESYbde0oaYAAAAd/canon-event-lochan-bwefi.gif"  target="_blank">canon event</a>? 🕸), the experience of building the components, dealing with various conditions, and handling the API calls was incredibly enriching. The process not only solidified my practical understanding, but also provided valuable insights into code architecture and optimization.
 
@@ -149,6 +151,7 @@ npm test
 
 This project allows you to:
 - Frontend Tests with the React testing library
+- Creation of API mocks with Mock Service Worker 
 - Search for a Pokémon by name
 - Search for a Pokémon by ID
 - Filter Pokémon by type

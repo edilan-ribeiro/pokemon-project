@@ -88,6 +88,7 @@ Para construção do projeto foi necessário o uso de diversas bibliotecas adici
 - useAnimations: para carregamento
 - React Icons: para ícones
 - React testing library + Vitest + Jsdom: para realização dos testes
+- Mock Service Worker: para fazer o mock da API para os testes
 
 Embora muitos desenvolvedores já tenham realizado projetos semelhantes (seria este um <a href="https://media.tenor.com/GESYbde0oaYAAAAd/canon-event-lochan-bwefi.gif" target="_blank">evento canônico</a>? 🕸), a experiência de construir os componentes, lidar com diversas condições e lidar com as chamadas de api foi incrivelmente enriquecedora. O processo não apenas solidificou meu entendimento prático, mas também proporcionou insights valiosos sobre a arquitetura e a otimização do código.
 
@@ -129,6 +130,7 @@ Para evitar isso foi necessário criar uma regra que verifica o tipo de input co
 
 Em resumo foi possível aprender e praticar:
  - Testes frontend com React testing library
+ - Criação de Mocks de API com Mock Service Worker 
  - Componentes e modificação props
  - Formulários e validações usando react hook form e zod
  - Aplicação de useContext
