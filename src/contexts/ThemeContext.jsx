@@ -6,8 +6,13 @@ export const ThemeContext = createContext({})
 export const ThemeProvider = ({children}) => {
 
     const getInitialTheme = () => {
-        const theme = localStorage.getItem('theme')
-        return theme ? JSON.parse(theme) : themes.light
+        try { 
+            const theme = localStorage.getItem('theme')
+            return theme ? JSON.parse(theme) : themes.light
+        } catch{
+            localStorage.removeItem('theme')
+            return themes.light
+        }
     }
 
     const [ theme, setTheme ] = useState(getInitialTheme)
