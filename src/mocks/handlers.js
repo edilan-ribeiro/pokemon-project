@@ -24,6 +24,44 @@ import iceData from "./dataMock/types-mock/iceData.json"
 import overgrowData from "./dataMock/abilities-mock/overgrowData.json"
 import chlorophyllData from "./dataMock/abilities-mock/chlorophyllData.json"
 
+
+const nameData = {
+	"bulbasaur": bulbasaurData,
+	"1": bulbasaurData,
+	"ivysaur": ivysaurData,
+	"2": ivysaurData,
+	"venusaur": venusaurData,
+	"3": venusaurData,
+	"charmander": charmanderData,
+	"4": charmanderData,
+	"charmeleon": charmeleonData,
+	"5": charmeleonData,
+	"charizard": charizardData,
+	"6": charizardData,
+	"squirtle": squirtleData,
+	"7": squirtleData,
+	"wartortle": wartortleData,
+	"8": wartortleData,
+	"blastoise": blastoiseData,
+	"9": blastoiseData,
+	"caterpie": caterpieData,
+	"10": caterpieData,
+	"metapod": metapodData,
+	"11": metapodData,
+	"butterfree": butterfreeData,
+	"12": butterfreeData,
+	"gastly": gastlyData,
+	"92": gastlyData,
+	"haunter": haunterData,
+	"93": haunterData,
+	"gengar": gengarData,
+	"94": gengarData,
+	"articuno": articunoData,
+	"144": articunoData,
+	"lapras": laprasData,
+	"131": laprasData,
+   }
+
 const handlers = [
 	rest.get("https://pokeapi.co/api/v2/pokemon", (req, res, ctx) => {
 		req.url.searchParams.get("limit=12")
@@ -38,62 +76,8 @@ const handlers = [
 
 	rest.get("https://pokeapi.co/api/v2/pokemon/:name", (req, res, ctx) => {
 		const name = req.params.name
-		
-		switch (name) {
-			case "bulbasaur":
-			case '1':
-				return res(ctx.json(bulbasaurData))
-			case "ivysaur":
-			case '2':
-				return res(ctx.json(ivysaurData))
-			case "venusaur":
-			case '3':
-				return res(ctx.json(venusaurData))
-			case "charmander":
-			case '4':
-				return res(ctx.json(charmanderData))
-			case "charmeleon":
-			case '5':
-				return res(ctx.json(charmeleonData))
-			case "charizard":
-			case '6':
-				return res(ctx.json(charizardData))
-			case "squirtle":
-			case '7':
-				return res(ctx.json(squirtleData))
-			case "wartortle":
-			case '8':
-				return res(ctx.json(wartortleData))
-			case "blastoise":
-			case '9':
-				return res(ctx.json(blastoiseData))
-			case "caterpie":
-			case '10':
-				return res(ctx.json(caterpieData))
-			case "metapod":
-			case '11':
-				return res(ctx.json(metapodData))
-			case "butterfree":
-			case '12':
-				return res(ctx.json(butterfreeData))
-			case "gastly":
-			case '92':
-				return res(ctx.json(gastlyData))
-			case "haunter":
-			case '93':
-				return res(ctx.json(haunterData))
-			case "gengar":
-			case '94':
-				return res(ctx.json(gengarData))
-			case "articuno":
-			case '144':
-				return res(ctx.json(articunoData))
-			case "lapras":
-			case '131':
-				return res(ctx.json(laprasData))
-			default:
-				return res(ctx.status(404))
-		}
+
+		return res(ctx.json(nameData[name] || ctx.status(404)))		
 	}),
 
 	rest.get('https://pokeapi.co/api/v2/ability/:skillName', (req, res, ctx) => {
