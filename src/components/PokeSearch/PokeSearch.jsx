@@ -9,10 +9,8 @@ const createSearchSchema = z.object({
 	search: z
 		.string()
 		.min(1, "The field is empty")
-		.refine((value) => value !== "0", {
-			message: "There is no pokemon with id 0",
-		})
-		.refine(value => !value.includes(' '), "PokeApi doesn't allow spaces in name, try to use a hyphen instead!")
+		.refine((value) => value !== "0", "There is no pokemon with id 0")
+		.refine(value => !value.includes(' '), "PokeApi doesn't allow spaces in name, try to use a hyphen instead! Example: mr-mime")
 		.refine(
 			(value) =>
 				/^\d+$/.test(value)
@@ -26,6 +24,7 @@ const createSearchSchema = z.object({
 					: value,
 			{ message: "Must be a number between 1 and 1017" }
 		)
+		.refine(value => !value.startsWith("0"), "Pokemon IDs should not start with 0,\n try removing the initial zeroes")
 })
 
 export const PokeSearch = ({ setSearchData, setTypeFilter, setIsLoading }) => {
