@@ -13,7 +13,7 @@
 
 <br />
 <div align="center">
- <a href="https://github.com/github_username/pokemon-project">
+ <a href="https://github.com/edilan-ribeiro/pokemon-project">
     <img src="./public/images/readme/logo.png" alt="Logo" width="80" height="80">
   </a>
 
